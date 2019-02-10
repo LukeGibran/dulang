@@ -1,6 +1,6 @@
 .wrapper {
-  height: 100vh;
-  padding: 5rem;
+  height: 80vh;
+  padding: 2rem 5rem 0 5rem;
   display: flex;
   flex-flow: column;
   .title {
@@ -19,7 +19,7 @@
     align-items: center;
 
     .img {
-      margin: 2.5rem 0;
+      margin: 2rem 0;
       height: 400px;
       width: 300px;
       box-shadow: 0 10px 10px rgba(black, 0.5);
@@ -92,6 +92,17 @@
       &::before {
         opacity: 0.8;
       }
+    }
+  }
+
+  .link {
+    align-self: flex-end;
+    .btn-link {
+      text-decoration: none;
+      background: $primary_dark;
+      padding: 10px 15px;
+      color: #fff;
+      box-shadow: 0 10px 5px rgba(black, 0.5);
     }
   }
 }

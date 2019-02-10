@@ -34,7 +34,9 @@
                 </div>
             </div>
 
-            <a href="#" class="link">Confirm</a>
+            <div class="link">
+            <a href="#" class="btn-link">Confirm</a>
+            </div>
         </div>
     </main>
 </body>
