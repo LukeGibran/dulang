@@ -1,0 +1,97 @@
+.wrapper {
+  height: 100vh;
+  padding: 5rem;
+  display: flex;
+  flex-flow: column;
+  .title {
+    h1 {
+      font-size: 2.5rem;
+      color: $primary_dark;
+      margin-bottom: 5px;
+    }
+  }
+
+  .images {
+    display: grid;
+    height: 500px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+
+    .img {
+      margin: 2.5rem 0;
+      height: 400px;
+      width: 300px;
+      box-shadow: 0 10px 10px rgba(black, 0.5);
+      position: relative;
+      cursor: pointer;
+      transition: all 0.5s ease-out;
+      &.wedding {
+        background: url('../img/wedding.jpeg');
+        background-size: cover;
+        background-position: center;
+      }
+      &.catering {
+        background: url('../img/catering.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+      &.packlunch {
+        background: url('../img/packlunch.jpeg');
+        background-size: cover;
+        background-position: center;
+      }
+
+      h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 2.5rem;
+        opacity: 0;
+      }
+
+      &.selected {
+        border: 5px solid $primary;
+        transform: scale(0.98);
+        color: #fff;
+        font-size: 2.5rem;
+        font-weight: 800;
+
+        &::before {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          content: attr(data-name);
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background: $primary_dark;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .img::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: $primary_dark;
+      opacity: 0.3;
+    }
+
+    .img:hover {
+      transform: scale(0.98);
+      h1 {
+        opacity: 1;
+      }
+      &::before {
+        opacity: 0.8;
+      }
+    }
+  }
+}
