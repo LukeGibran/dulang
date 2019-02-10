@@ -136,16 +136,16 @@
       .btn-green {
         background: #2ecc71;
         padding: 5px 10px;
-        border: none;
+        border: 3px solid #2ecc71;
         cursor: pointer;
         height: 35px;
         width: 100px;
-
-        transition: all 0.5s ease-out;
       }
 
       .btn-green:hover {
-        box-shadow: 0 10px 10px rgba(black, 0.2);
+        background: #fff;
+        border: 3px solid #2ecc71;
+        color: #2ecc71;
       }
 
       margin-bottom: 3.5rem;

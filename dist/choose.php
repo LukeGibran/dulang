@@ -26,7 +26,7 @@
                 <div class="img wedding " data-name="Wedding">
                     <h1>Wedding</h1>
                 </div>
-                <div class="img catering selected" data-name="Catering">
+                <div class="img catering" data-name="Catering">
                     <h1>Catering</h1>
                 </div>
                 <div class="img packlunch" data-name="Packlunch">
@@ -39,5 +39,6 @@
             </div>
         </div>
     </main>
+    <script src="js/choose.js"></script>
 </body>
 </html>
