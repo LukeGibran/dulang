@@ -1,0 +1,85 @@
+#login {
+  background: $primary_dark;
+  .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 40px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .box h2 {
+    color: $primary_dark;
+    padding: 0;
+    margin: 0, 0, 30px;
+    text-align: center;
+    font-family: 'Dancing Script';
+    font-size: 3rem;
+  }
+
+  .box .inputBox {
+    position: relative;
+  }
+
+  .box .inputBox input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #222;
+    margin-bottom: 30px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid $primary_dark;
+  }
+
+  .box .inputBox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #222;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+
+  .box .inputBox i#fffnput:focus ~ label,
+  .box .inputBox input:valid ~ label {
+    top: -18px;
+    left: 0;
+    color: $primary_dark;
+    font-size: 12px;
+  }
+
+  .box input[type='submit'] {
+    background: $primary_dark;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    float: right;
+  }
+
+  .btn-link {
+    text-decoration: none;
+    color: $primary_dark;
+
+    i {
+      margin-right: 3px;
+    }
+  }
+
+  .signup-link {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    color: #fff;
+  }
+}

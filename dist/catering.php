@@ -59,7 +59,7 @@
             </div>
             <div class="addons">
                 <div class="dish-name">
-                    <h1 class="addons-title">Maligay</h1>
+                    <h1 class="addons-title">Cocktail / Finger foods</h1>
                     <hr>
                 </div>
                 <div class="dishes">

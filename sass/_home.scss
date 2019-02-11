@@ -19,6 +19,19 @@
     background: $primary;
     font-family: 'Dancing Script';
   }
+
+  .login-link {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  .login-link:hover {
+    color: $primary;
+  }
 }
 
 #jumbotron::before {
@@ -130,13 +143,14 @@
       }
 
       input:focus {
-        border: 2px solid #2ecc71;
+        border: 2px solid $green;
       }
 
       .btn-green {
-        background: #2ecc71;
+        color: #fff;
+        background: $green;
         padding: 5px 10px;
-        border: 3px solid #2ecc71;
+        border: 3px solid $green;
         cursor: pointer;
         height: 35px;
         width: 100px;
@@ -144,8 +158,8 @@
 
       .btn-green:hover {
         background: #fff;
-        border: 3px solid #2ecc71;
-        color: #2ecc71;
+        border: 3px solid $green;
+        color: $green;
       }
 
       margin-bottom: 3.5rem;

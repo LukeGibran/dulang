@@ -12,6 +12,7 @@
     <main>
         <section id="jumbotron">
             <h1>Dulang</h1>
+            <a href="login.php" class="login-link"><i class="fas fa-user"></i> Login</a>
         </section>
         <nav class="navbar">
         <div class="nav-logo">
@@ -20,7 +21,7 @@
         <ul class="nav-items">
             <li class="nav-item"><a href="#" class="nav-link" ><i class="fa fa-home"></i>Home</a> </li>
             <li class="nav-item"> <a href="choose.php" class="nav-link"> <i class="fa fa-edit"></i>Schedule a Reservation</a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-phone-square"> </i>Contact Us</a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-address-card"> </i>Sign up</a></li>
         </ul>
         </nav>
 

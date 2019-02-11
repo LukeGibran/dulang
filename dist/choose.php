@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/all.min.css">
 </head>
-<body>
+<body id="choose">
     <nav class="navbar">
         <div class="nav-logo">
             <h1>Dulang</h1>
@@ -16,7 +16,7 @@
         <ul class="nav-items">
             <li class="nav-item"><a href="index.php" class="nav-link" ><i class="fa fa-home"></i>Home</a> </li>
             <li class="nav-item"> <a href="#" class="nav-link"> <i class="fa fa-edit"></i>Schedule a Reservation</a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-phone-square"> </i>Contact Us</a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-address-card"> </i>Sign up</a></li>
         </ul>
         </nav>
     <main>

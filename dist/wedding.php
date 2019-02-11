@@ -78,13 +78,13 @@
                         <span class="bg"></span>
                     </label>
                     <label class="addons-list">
-                        <input type="radio" name="addon" value="2" id="">
+                        <input type="radio" name="addon" value="3" id="">
                         <h2 class="addon-title">Trees</h2>
                         <h3 class="addon-price"><span class="amount">₱ 2,500</span></h3>
                         <span class="bg"></span>
                     </label>
                     <label class="addons-list">
-                        <input type="radio" name="addon" value="2" id="">
+                        <input type="radio" name="addon" value="4" id="">
                         <h2 class="addon-title">Trees</h2>
                         <h3 class="addon-price"><span class="amount">₱ 2,500</span></h3>
                         <span class="bg"></span>

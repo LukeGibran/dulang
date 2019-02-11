@@ -11,6 +11,30 @@
     color: $primary_dark;
   }
 
+  .event-type {
+    align-self: center;
+    color: $primary;
+    margin-bottom: 8px;
+  }
+
+  .select_type {
+    align-self: center;
+    select {
+      color: #fff;
+      background: $primary;
+      border: 5px solid $primary;
+      cursor: pointer;
+    }
+    .btn-sub {
+      color: #fff;
+      padding: 1rem 2rem;
+      background: $primary_dark;
+      padding: 7px 10px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
   .menu {
     .menu-title {
       color: $primary;
@@ -59,6 +83,10 @@
 
         input:checked ~ .bg {
           width: 100%;
+        }
+
+        &.packlunch {
+          height: 120px;
         }
       }
     }
@@ -129,11 +157,12 @@
   .btns {
     width: 100%;
     .btn-sub {
+      color: #fff;
       float: right;
-      padding: 1rem 2rem;
       background: $primary_dark;
       padding: 10px 15px;
       border: 3px solid $primary_dark;
+      text-transform: uppercase;
       cursor: pointer;
     }
 
