@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+$username = $_SESSION['username'];
+$name = $_SESSION['name'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +17,25 @@
     <title>Dulang</title>
 </head>
 <body>
+
     <main>
         <section id="jumbotron">
             <h1>Dulang</h1>
-            <a href="login.php" class="login-link"><i class="fas fa-user"></i> Login</a>
+
+            <?php
+                if($_SESSION['username']){
+                    echo '<a href="#" class="login-link"><i class="fas fa-user"></i> '.$username.'</a>';
+                } else{
+                    echo '<a href="login.php" class="login-link"><i class="fas fa-user"></i> Login</a>';
+                }
+
+                if($_GET['success']){
+                    echo '<span class="success" ><i class="fas fa-check"></i>Welcome '.$username.'!</span>';
+                }
+            ?>
+            
+            
+
         </section>
         <nav class="navbar">
         <div class="nav-logo">
@@ -21,7 +44,16 @@
         <ul class="nav-items">
             <li class="nav-item"><a href="#" class="nav-link" ><i class="fa fa-home"></i>Home</a> </li>
             <li class="nav-item"> <a href="choose.php" class="nav-link"> <i class="fa fa-edit"></i>Schedule a Reservation</a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-address-card"> </i>Sign up</a></li>
+
+            <?php 
+                if($_SESSION['username']){
+                    echo '<li class="nav-item"><a href="logout.php" class="nav-link"><i class="fa fa-sign-out-alt"> </i>Log out</a></li>';
+                } else{
+                    echo '<li class="nav-item"><a href="signup.php" class="nav-link"><i class="fa fa-address-card"> </i>Sign up</a></li>';
+                }
+            ?>
+       
+            
         </ul>
         </nav>
 

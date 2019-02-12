@@ -40,6 +40,17 @@
       color: $primary;
       font-size: 2.5rem;
       margin-bottom: 5px;
+      &.packlunch {
+        display: inline;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+
+      &.selected {
+        background: $primary;
+        color: #fff;
+        padding: 0 5px;
+      }
     }
 
     .dishes {
@@ -88,6 +99,10 @@
         &.packlunch {
           height: 120px;
         }
+      }
+
+      &.hide {
+        display: none;
       }
     }
   }

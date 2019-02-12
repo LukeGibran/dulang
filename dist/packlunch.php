@@ -23,11 +23,13 @@
         <form action="packlunch.php" method="get">
             <div class="menu">
                 <div class="dish-name">
-                    <h1 class="menu-title">Beef</h1>
+                    <h1 class="menu-title packlunch selected" id="beefSelect">Beef</h1>
+                    <h1 class="menu-title packlunch" id="chickSelect">Chicken</h1>
+                    <h1 class="menu-title packlunch" id="seaSelect" >Seafood</h1>
                     <hr>
                 </div>
 
-                <div class="dishes">
+                <div class="dishes" id="beef">
                     <label class="menu-list packlunch">
                         <input type="radio" name="menu" id="#" value="1">
                         <h2 class="menu-name">Tiyula Itum</h2>
@@ -57,13 +59,8 @@
                         <span class="bg"></span>
                     </label>
                 </div>
-                <!-- Chicken -->
-                <div class="dish-name">
-                    <h1 class="menu-title">Chicken</h1>
-                    <hr>
-                </div>
-            
-                <div class="dishes">
+                <!-- Chicken -->          
+                <div class="dishes hide" id="chicken">
                     <label class="menu-list packlunch">
                         <input type="radio" name="menu" id="#" value="5">
                         <h2 class="menu-name">Chicken Teriyaki</h2>
@@ -71,13 +68,7 @@
                         <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
                         <span class="bg"></span>
                     </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="6">
-                        <h2 class="menu-name">Chicken Barbeque</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
+
                     <label class="menu-list packlunch">
                         <input type="radio" name="menu" id="#" value="7">
                         <h2 class="menu-name">Chicken Adobo</h2>
@@ -95,12 +86,7 @@
                 </div>
 
                 <!-- Seafood -->
-                <div class="dish-name">
-                    <h1 class="menu-title">Seafood</h1>
-                    <hr>
-                </div>
-
-                <div class="dishes">
+                <div class="dishes hide" id="seafood">
                     <label class="menu-list packlunch">
                         <input type="radio" name="menu" id="#" value="9">
                         <h2 class="menu-name">Shrimp w/ Garlic</h2>
@@ -110,7 +96,7 @@
                     </label>
                     <label class="menu-list packlunch">
                         <input type="radio" name="menu" id="#" value="10">
-                        <h2 class="menu-name">Sweet and Spicy</h2>
+                        <h2 class="menu-name">Sweet & Spicy Fish</h2>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
                         <span class="bg"></span>
@@ -118,6 +104,13 @@
                     <label class="menu-list packlunch">
                         <input type="radio" name="menu" id="#" value="11">
                         <h2 class="menu-name">Camaron Rebusado</h2>
+                        <hr>
+                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
+                        <span class="bg"></span>
+                    </label>
+                    <label class="menu-list packlunch">
+                        <input type="radio" name="menu" id="#" value="12">
+                        <h2 class="menu-name">Squid Barbeque</h2>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
                         <span class="bg"></span>
@@ -172,5 +165,7 @@
             </div>
         </form>
     </main>
+
+    <script src="js/packlunch.js"></script>
 </body>
 </html>

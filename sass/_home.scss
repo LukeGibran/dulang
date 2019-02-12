@@ -32,6 +32,31 @@
   .login-link:hover {
     color: $primary;
   }
+
+  span {
+    position: absolute;
+    top: 70px;
+    right: 150px;
+    font-size: 1.2rem;
+    text-align: center;
+    display: block;
+    margin: 10px 30px;
+    color: #fff;
+    padding: 5px;
+    i {
+      padding: 0 5px;
+    }
+
+    &.success {
+      background: $green;
+      border-left: 5px solid darken($color: $green, $amount: 10);
+    }
+
+    &.error {
+      background: firebrick;
+      border-left: 5px solid darken($color: firebrick, $amount: 10);
+    }
+  }
 }
 
 #jumbotron::before {
