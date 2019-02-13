@@ -52,3 +52,23 @@
     insert into packlunch_addon(name, price, pax) values('Sotanghon', 1700, 'rectangle');
     insert into packlunch_addon(name, price, pax) values('Chopsuey', 1700, 'rectangle');
     insert into packlunch_addon(name, price, pax) values('Veggies', 1700, 'rectangle');
+
+
+    // For Catering
+
+  insert into catering(name, price, dishes, recommendation) values('Set 1',150,'Beef kulma, Honeyed-chicken, Pansit Udang, Macaroni Salad, Rice/Fried Rice/Kyuning, Softdrinks, Free water', 0);
+
+   insert into catering(name, price, dishes, recommendation) values('Set 2',160,'Beef steak, Buttered, Chopsuey, Leche Flan, Rice/Yellow Rice, Softdrinks, Free water', 0);
+
+   insert into catering(name, price, dishes, recommendation) values('Set 3',160,'Beef Rendang, Chicken Pyanggang, Crabs w/ Veggies, Bihon / sotanghon, Fruit Salad, Rice/Yellow Rice, Softdrinks, Free water', 0);
+
+   insert into catering(name, price, dishes, recommendation) values('Set 4',180,'Beef Menudo, Fish Fillet, Sotanghon, Fruit Salad, Chicken BBQ, Macaroni,Softdrinks, Free water', 0);
+
+   // For Catering_addon
+
+   insert into catering_addon(name, price, dishes) values('Set 1',150, 'Chicken Lollipop, Fried Lumpia, Revel Bars, Pancit, Juice/ Ice tea');
+
+  insert into catering_addon(name, price, dishes) values('Set 2',130, 'Mixed Shawarma, Tarts, Mini Cupcakes, Chocolate Cakes, Juice/ Ice tea');
+
+  insert into catering_addon(name, price, dishes) values('Set 3',150, 'Tuna Sandwich, Empanada, Chicken Sandwiches, Custard Cake, Ice tea / Ponkana');
+

@@ -26,10 +26,6 @@ if(isset($_GET['order-submit'])){
         }else{
             echo 'Error: ' . mysqli_error();
         }
-
-           /**
-     * WEDDING ADDON
-     */
     
     $for_addon = "SELECT * from wedding_addon WHERE waddon_id = '$addon'";
 
@@ -40,13 +36,62 @@ if(isset($_GET['order-submit'])){
         echo 'Error: ' . mysqli_error();
 
     }
-    //END WEDDING ADDON
 
       }
     // END WEDDING
 
+    /**
+    * CATERING
+    */
+
+    elseif ($type == 'catering'){
+
+    
+    $formenu = "SELECT * from catering WHERE cat_id = '$menu'";
+
+        if($menu_result = mysqli_query($conn, $formenu)){
+            $menu_pick = mysqli_fetch_assoc($menu_result);
+        }else{
+            echo 'Error: ' . mysqli_error();
+        }
+    
+    $for_addon = "SELECT * from catering_addon WHERE caddon_id = '$addon'";
+
+    if($addon_result = mysqli_query($conn, $for_addon)){
+        $addon_pick = mysqli_fetch_assoc($addon_result);
+
+    }else{
+        echo 'Error: ' . mysqli_error();
+
+    }
+    } // END CATERING
+
+    /**
+    * PACKLUNCH
+    */
+
+    else if($type == 'packlunch'){
+
+        $formenu = "SELECT * from packlunch WHERE pack_id = '$menu'";
+
+        if($menu_result = mysqli_query($conn, $formenu)){
+            $menu_pick = mysqli_fetch_assoc($menu_result);
+        }else{
+            echo 'Error: ' . mysqli_error();
+        }
 
 
+    $for_addon = "SELECT * from packlunch_addon WHERE paddon_id = '$addon'";
+
+    if($addon_result = mysqli_query($conn, $for_addon)){
+        $addon_pick = mysqli_fetch_assoc($addon_result);
+
+    }else{
+        echo 'Error: ' . mysqli_error();
+
+    }
+    }
+    // END OF PACKLUNCH 
 
     // Free Result
     mysqli_free_result($formenu,$for_addon);
@@ -58,9 +103,11 @@ if(isset($_GET['order-submit'])){
         header('Location: login.php');
     }
   
-} else{
+} 
+else{
     header('Location: index.php');
 }
+
 
 
 ?>
@@ -121,7 +168,7 @@ if(isset($_GET['order-submit'])){
                 <div class="dishes">
                    <?php if($type == 'wedding'):?>
                 <label class="menu-list">
-                        <input type="text" name="menu" id="#" value="1" hidden>
+                        <input type="text" name="menu" id="#" value="<?php echo $menu; ?>" hidden>
                         <h1 class="menu-name"><?php echo $menu_pick['name']; ?></h1>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ <?php echo $menu_pick['price']?></span></h2>
@@ -135,6 +182,41 @@ if(isset($_GET['order-submit'])){
                         <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'] ?></span></h3>
                 </label>
                 <?php endif; ?>
+
+                <?php if($type == 'catering'): ?>
+                <label class="menu-list">
+                        <input type="text" name="menu" id="#" value="<?php echo $menu; ?>" hidden>
+                        <h1 class="menu-name"><?php echo $menu_pick['name']; ?></h1>
+                        <hr>
+                        <h2 class="menu-price"> <span class="amount">₱ <?php echo $menu_pick['price']?> / pax</span></h2>
+                        <h3 class="menu-dishes">Dishes: </h3>
+                        <p class="menu-dish"><?php echo $menu_pick['dishes'];?></p>
+                </label>
+
+                <label class="addons-list -catering">
+                        <input type="text" name="addon" value="<?php echo $addon;?>" id="" hidden>
+                        <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
+                        <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'] ?> / pax</span></h3>
+                        <h3 class="menu-dishes">Dishes: </h3>
+                        <p class="menu-dish"><?php echo $addon_pick['dishes']; ?></p>
+                </label>
+                <?php endif;?>
+
+                <?php if($type == 'packlunch'): ?>
+                     <label class="menu-list packlunch" required>
+                        <input type="text" name="menu" id="#" value="<?php echo $menu; ?>" hidden>
+                        <h2 class="menu-name"><?php echo $menu_pick['name']; ?></h2>
+                        <hr>
+                        <h2 class="menu-price"> <span class="amount">₱ <?php echo $menu_pick['price']; ?></span></h2>
+                        <span class="bg"></span>
+                    </label>
+
+                    <label class="addons-list -wedding">
+                        <input type="text" name="addon" value="<?php echo $addon; ?>" id="" hidden>
+                        <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
+                        <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'];?> / pax</span></h3>
+                    </label>
+                <?php endif;?>
 
                 <!-- <label class="addons-list -catering">
                         <input type="text" name="addon" value="4" id="" hidden>
@@ -156,7 +238,7 @@ if(isset($_GET['order-submit'])){
 
             <div class="btns">
             <a href="<?php echo $type?>.php" class="btn-link"><i class="fas fa-arrow-left"></i>Back</a>
-                <button type="submit" class="btn-sub" >Confirm</button>
+                <button type="submit" class="btn-sub" name="checkout-order">Confirm</button>
             </div>
         </form>
     </div>

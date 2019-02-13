@@ -115,7 +115,7 @@ if(isset($_GET['type-sub'])){
             </select>
             <button type="submit" class='btn-sub' name="type-sub">Submit</button>
         </form>
-        <form action="packlunch.php" method="get">
+        <form action="user_info.php" method="get">
             <div class="menu">
                 <div class="dish-name">
                     <h1 class="menu-title packlunch selected" id="beefSelect">Beef</h1>
@@ -129,7 +129,7 @@ if(isset($_GET['type-sub'])){
                 <?php foreach($beef as $beef):?>
             
                      <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="<?php echo $beef['pack_id'] ?>">
+                        <input type="radio" name="menu" id="#" value="<?php echo $beef['pack_id'] ?>" required>
                         <h2 class="menu-name"><?php echo $beef['name']; ?></h2>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ <?php echo $beef['price']; ?></span></h2>
@@ -151,7 +151,7 @@ if(isset($_GET['type-sub'])){
                 <?php foreach($chicken as $chicken):?>
             
                      <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="<?php echo $chicken['pack_id'] ?>">
+                        <input type="radio" name="menu" id="#" value="<?php echo $chicken['pack_id'] ?>" required>
                         <h2 class="menu-name"><?php echo $chicken['name']; ?></h2>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ <?php echo $chicken['price']; ?></span></h2>
@@ -165,7 +165,7 @@ if(isset($_GET['type-sub'])){
                 <div class="dishes hide" id="seafood">
                 <?php foreach($seafood as $seafood):?>
             
-                     <label class="menu-list packlunch">
+                     <label class="menu-list packlunch" required>
                         <input type="radio" name="menu" id="#" value="<?php echo $seafood['pack_id'] ?>">
                         <h2 class="menu-name"><?php echo $seafood['name']; ?></h2>
                         <hr>
@@ -185,7 +185,7 @@ if(isset($_GET['type-sub'])){
                 <div class="dishes">
                 <?php foreach($addons as $addons): ?>
                     <label class="addons-list">
-                        <input type="radio" name="addon" value="<?php $addons['paddon_id']?>" id="" required>
+                        <input type="radio" name="addon" value="<?php echo $addons['paddon_id']?>" id="" required>
                         <h2 class="addon-title"><?php echo $addons['name']; ?></h2>
                         <h3 class="addon-price"><span class="amount">₱ <?php echo $addons['price']; ?></span></h3>
                         <span class="bg"></span>
@@ -203,7 +203,7 @@ if(isset($_GET['type-sub'])){
             
             <div class="btns">
             <a href="choose.php" class="btn-link"><i class="fas fa-arrow-left"></i>Back</a>
-            <button type="submit" class='btn-sub'>Submit</button>
+            <button type="submit" class='btn-sub' name='order-submit'>Submit</button>
             </div>
         </form>
     </main>

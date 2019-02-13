@@ -37,6 +37,7 @@
         border-bottom: 3px solid $primary_dark;
         background: #fff;
         color: $primary_dark;
+        cursor: pointer;
       }
 
       input[type='text']:focus {
@@ -137,6 +138,14 @@
             .menu-dish {
               font-size: 1rem;
             }
+
+            &.packlunch {
+              height: 130px;
+
+              .menu-name {
+                font-size: 1.5rem;
+              }
+            }
           }
 
           .addons-list {
@@ -150,7 +159,7 @@
             position: relative;
             text-align: center;
             .addon-title {
-              font-size: 2rem;
+              font-size: 1.5rem;
             }
 
             .addon-price {

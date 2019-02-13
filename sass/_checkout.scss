@@ -11,17 +11,32 @@
       color: $primary_dark;
     }
 
-    .btn-print {
+    .btns {
       align-self: center;
-      background: $primary;
-      padding: 8px 10px;
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin: 10px 0 2rem 0;
+
+      .btn-print {
+        background: $primary;
+        padding: 8px 10px;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .btn-home {
+        background: $primary_dark;
+        padding: 8px 10px;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
     }
 
     .btn-print:hover {
+      box-shadow: 0 1px 10px rgba(black, 0.5);
+    }
+
+    .btn-home:hover {
       box-shadow: 0 1px 10px rgba(black, 0.5);
     }
 

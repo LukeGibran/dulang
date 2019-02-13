@@ -58,7 +58,7 @@
 
                 <?php foreach($posts as $post) : ?>
                 <label class="menu-list">
-                        <input type="radio" name="menu" value="<?php echo $post['wed_id']; ?>">
+                        <input type="radio" name="menu" value="<?php echo $post['wed_id']; ?>" required>
                         <h1 class="menu-name"><?php echo $post['name'];?></h1>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ <?php echo $post['price']; ?></span></h2>
