@@ -37,12 +37,12 @@
     position: absolute;
     top: 70px;
     right: 150px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
     display: block;
     margin: 10px 30px;
     color: #fff;
-    padding: 5px;
+    padding: 5px 15px 5px 5px;
     i {
       padding: 0 5px;
     }
@@ -52,9 +52,9 @@
       border-left: 5px solid darken($color: $green, $amount: 10);
     }
 
-    &.error {
-      background: firebrick;
-      border-left: 5px solid darken($color: firebrick, $amount: 10);
+    &.warn {
+      background: goldenrod;
+      border-left: 5px solid darken($color: goldenrod, $amount: 10);
     }
   }
 }

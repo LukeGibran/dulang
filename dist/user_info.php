@@ -1,3 +1,70 @@
+<?php
+
+if(isset($_GET['order-submit'])){
+
+    session_start();
+    require ('scripts/database/db.php');
+
+    if(isset($_SESSION['userId'])){
+        $name = $_SESSION['name'];
+        $phone = $_SESSION['phone'];
+        $type = $_SESSION['type'];
+        $menu = $_GET['menu'];
+        $addon = $_GET['addon'];
+
+       
+     /**
+      * WEDDING
+      */
+
+      if($type == 'wedding'){
+
+        $formenu = "SELECT * from wedding WHERE wed_id = '$menu'";
+
+        if($menu_result = mysqli_query($conn, $formenu)){
+            $menu_pick = mysqli_fetch_assoc($menu_result);
+        }else{
+            echo 'Error: ' . mysqli_error();
+        }
+
+           /**
+     * WEDDING ADDON
+     */
+    
+    $for_addon = "SELECT * from wedding_addon WHERE waddon_id = '$addon'";
+
+    if($addon_result = mysqli_query($conn, $for_addon)){
+        $addon_pick = mysqli_fetch_assoc($addon_result);
+
+    }else{
+        echo 'Error: ' . mysqli_error();
+
+    }
+    //END WEDDING ADDON
+
+      }
+    // END WEDDING
+
+
+
+
+    // Free Result
+    mysqli_free_result($formenu,$for_addon);
+
+    // Close Connection
+    mysqli_close($conn);
+ 
+    } else{
+        header('Location: login.php');
+    }
+  
+} else{
+    header('Location: index.php');
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +78,20 @@
 <body id="user_info">
     <div class="wrapper">
         <h1 class="user-title">Order's information</h1>
-        <form action="user_info.php">
+        <form action="user_info.php" method="get">
             <div class="first-part">
                 <div class="form-control">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="" required>
+                <input type="text" name="name" id="" value="<?php echo $name; ?>" readonly>
                 </div>
 
                 <div class="form-control">
                 <label for="number">Phone Number</label>
-                <input type="text" name="number" id="" required>
+                <input type="text" name="number" id="" value="<?php echo $phone?>" readonly>
                 </div>
                 
                 <div class="form-control">
-                <label for="location">Address</label>
+                <label for="location">Event Location</label>
                 <input type="text" name="location" id="" required>
                 </div>
             </div>
@@ -46,9 +113,50 @@
                 </div>
             </div>
 
+            <div class="menu">
+                <div class="dish-name">
+                    <h2 class="menu-title">Your Order:</h2>
+                </div>
+
+                <div class="dishes">
+                   <?php if($type == 'wedding'):?>
+                <label class="menu-list">
+                        <input type="text" name="menu" id="#" value="1" hidden>
+                        <h1 class="menu-name"><?php echo $menu_pick['name']; ?></h1>
+                        <hr>
+                        <h2 class="menu-price"> <span class="amount">₱ <?php echo $menu_pick['price']?></span></h2>
+                        <h3 class="menu-dishes">Dishes: </h3>
+                        <p class="menu-dish"><?php echo $menu_pick['menu'];?></p>
+                </label>
+
+                <label class="addons-list -wedding">
+                        <input type="text" name="addon" value="<?php echo $addon; ?>" id="" hidden>
+                        <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
+                        <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'] ?></span></h3>
+                </label>
+                <?php endif; ?>
+
+                <!-- <label class="addons-list -catering">
+                        <input type="text" name="addon" value="4" id="" hidden>
+                        <h2 class="addon-title">Set 4</h2>
+                        <h3 class="addon-price"><span class="amount">₱ 150 / pax</span></h3>
+                        <h3 class="menu-dishes">Dishes: </h3>
+                        <p class="menu-dish">Chicken Lollipop, Fried Lumpia, Revel bars, Pancit, Juice/Ice tea</p>
+                </label>
+
+                <label class="addons-list -wedding">
+                        <input type="text" name="addon" value="4" id="" hidden>
+                        <h2 class="addon-title">Set 4</h2>
+                        <h3 class="addon-price"><span class="amount">₱ 150 / pax</span></h3>
+
+                </label> -->
+                    
+                </div>
+            </div>
+
             <div class="btns">
-            <a href="choose.php" class="btn-link"><i class="fas fa-arrow-left"></i>Back</a>
-                <button type="submit" class="btn-sub" >Submit</button>
+            <a href="<?php echo $type?>.php" class="btn-link"><i class="fas fa-arrow-left"></i>Back</a>
+                <button type="submit" class="btn-sub" >Confirm</button>
             </div>
         </form>
     </div>

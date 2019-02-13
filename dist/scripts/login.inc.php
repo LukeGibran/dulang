@@ -25,7 +25,7 @@ if(isset($_POST['login-submit'])){
                 $_SESSION['userId'] = $row['user_id'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['name'] = $row['name'];
-
+                $_SESSION['phone'] = $row['phone'];
                 header('Location: ../index.php?success=true');
                 exit();
             }

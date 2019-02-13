@@ -31,6 +31,8 @@ $name = $_SESSION['name'];
 
                 if($_GET['success']){
                     echo '<span class="success" ><i class="fas fa-check"></i>Welcome '.$username.'!</span>';
+                } elseif ($_GET['logout']) {
+                    echo '<span class="warn" ><i class="fas fa-check"></i>You\'ve logout</span>';
                 }
             ?>
             
@@ -84,5 +86,7 @@ $name = $_SESSION['name'];
     <footer>
       copyright DULANG 2019 made with ❤️
     </footer>
+
+    <script src="js/home.js"></script>
 </body>
 </html>
