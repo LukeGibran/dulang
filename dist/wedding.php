@@ -13,7 +13,7 @@
         $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
         mysqli_free_result($result);
     }else{
-        echo 'Error: ' . mysqli_error();
+        echo 'Error: ' . mysqli_error($conn);
     }
     // End of Mulang
 
@@ -27,7 +27,7 @@
         mysqli_free_result($result);
         mysqli_close($conn);
     }else{
-        echo 'Error: ' . mysqli_error();
+        echo 'Error: ' . mysqli_error($conn);
     }
      // End of Maligay
     

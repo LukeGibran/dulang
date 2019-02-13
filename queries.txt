@@ -1,0 +1,54 @@
+// For Packlunch
+
+  // Round
+
+  insert into packlunch(name, type, price, pax, recommendation) values ('Chicken Teriyaki', 'chicken', 1800, 'round', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Chicken Barbeque', 'chicken', 1800, 'round', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Fried Chicken', 'chicken', 1800, 'round', 0);
+
+
+  insert into packlunch(name, type, price, pax, recommendation) values ('Shrimp w/ Garlic', 'seafood', 3500, 'round', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Sweet and Spicy', 'seafood', 3500, 'round', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Squid Barbeque', 'seafood', 3500, 'round', 0);
+  
+  // oblong
+  insert into packlunch(name, type, price, pax, recommendation) values ('Chicken Teriyaki', 'chicken', 2500, 'oblong', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Chicken Barbeque', 'chicken', 2500, 'oblong', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Fried Chicken', 'chicken', 2500, 'oblong', 0);
+
+  insert into packlunch(name, type, price, pax, recommendation) values ('Shrimp w/ Garlic', 'seafood', 5200, 'oblong', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Sweet and Spicy', 'seafood', 5200, 'oblong', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Squid Barbeque', 'seafood', 5200, 'oblong', 0);
+
+  // rectangle
+  insert into packlunch(name, type, price, pax, recommendation) values ('Kulma', 'beef', 5500, 'rectangle', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Rendang', 'beef', 5500, 'rectangle', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Kari Kari', 'beef', 5500, 'rectangle', 0);
+
+  insert into packlunch(name, type, price, pax, recommendation) values ('Chicken Teriyaki', 'chicken', 3300, 'rectangle', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Chicken Barbeque', 'chicken', 3300, 'rectangle', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Fried Chicken', 'chicken', 3300, 'rectangle', 0);
+  
+  insert into packlunch(name, type, price, pax, recommendation) values ('Shrimp w/ Garlic', 'seafood', 6800, 'rectangle', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Sweet and Spicy', 'seafood', 6800, 'rectangle', 0);
+  insert into packlunch(name, type, price, pax, recommendation) values ('Squid Barbeque', 'seafood', 6800, 'rectangle', 0);
+
+// For Packlunch_addon;
+
+    //Round
+    insert into packlunch_addon(name, price, pax) values('Bihon', 850, 'round');
+    insert into packlunch_addon(name, price, pax) values('Sotanghon', 850, 'round');
+    insert into packlunch_addon(name, price, pax) values('Chopsuey', 850, 'round');
+    insert into packlunch_addon(name, price, pax) values('Veggies', 850, 'round');
+
+    //Oblong
+    insert into packlunch_addon(name, price, pax) values('Bihon', 1250, 'oblong');
+    insert into packlunch_addon(name, price, pax) values('Sotanghon', 1250, 'oblong');
+    insert into packlunch_addon(name, price, pax) values('Chopsuey', 1250, 'oblong');
+    insert into packlunch_addon(name, price, pax) values('Veggies', 1250, 'oblong');
+
+    //Rectangle
+    insert into packlunch_addon(name, price, pax) values('Bihon', 1700, 'rectangle');
+    insert into packlunch_addon(name, price, pax) values('Sotanghon', 1700, 'rectangle');
+    insert into packlunch_addon(name, price, pax) values('Chopsuey', 1700, 'rectangle');
+    insert into packlunch_addon(name, price, pax) values('Veggies', 1700, 'rectangle');

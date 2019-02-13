@@ -1,3 +1,90 @@
+<?php
+    session_start();
+
+    $_SESSION['type'] = 'packlunch';
+
+
+    
+function getBeef($pax){
+    require ('scripts/database/db.php');
+
+    $menu = "SELECT * FROM packlunch WHERE type = 'beef' AND pax = '$pax'";
+    if($result = mysqli_query($conn, $menu)){
+        $beef= mysqli_fetch_all($result, MYSQLI_ASSOC);
+        mysqli_free_result($result);
+
+        return $beef;
+    }else{
+        echo 'Error: ' .mysqli_error($conn);
+    }
+
+   }
+
+function getChicken($pax){
+
+require ('scripts/database/db.php');
+$menu = "SELECT * FROM packlunch WHERE type = 'chicken' AND pax = '$pax'";
+if($result = mysqli_query($conn, $menu)){
+ $chicken = mysqli_fetch_all($result, MYSQLI_ASSOC);
+ mysqli_free_result($result);
+
+ return $chicken;
+}else{
+ echo 'Error: ' .mysqli_error($conn);
+}
+
+}
+
+function getSeafood($pax){
+require ('scripts/database/db.php');
+$menu = "SELECT * FROM packlunch WHERE type = 'seafood' AND pax ='$pax'";
+if($result = mysqli_query($conn, $menu)){
+ $seafood = mysqli_fetch_all($result, MYSQLI_ASSOC);
+ mysqli_free_result($result);
+
+ return $seafood;
+}else{
+ echo 'Error: ' . mysqli_error($conn);
+}
+
+}
+
+function getAddons($pax){
+    require ('scripts/database/db.php');
+    $addons = "SELECT * from packlunch_addon WHERE pax = '$pax'";
+    if($result_a = mysqli_query($conn, $addons)){
+       $addons_posts = mysqli_fetch_all($result_a, MYSQLI_ASSOC);
+       mysqli_free_result($result);
+
+       return $addons_posts;
+   }else{
+       echo 'Error: ' . mysqli_error($conn);
+   }
+}
+
+
+
+if(isset($_GET['type-sub'])){
+    $pax = $_GET['pax'];
+
+    $beef = getBeef($pax);
+    $chicken = getChicken($pax);
+    $seafood = getSeafood($pax);
+    $addons = getAddons($pax);
+
+    mysqli_close($conn);
+}else{
+    $pax = 'round';
+
+    $beef = getBeef($pax);
+    $chicken = getChicken($pax);
+    $seafood = getSeafood($pax);
+    $addons = getAddons($pax);
+
+    mysqli_close($conn);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +98,22 @@
 <body >
     <main id="event">
         <h1 class="event-title">Packlunch</h1>
-        <h2 class="event-type">Round (Good for 25pax)</h2>
-        <form action="packlunch.php" class="select_type">
+        <?php
+         if($pax == 'round'){
+             echo '<h2 class="event-type">Round (Good for 25pax)</h2>';
+         }else if($pax == 'oblong'){
+            echo '<h2 class="event-type">Oblong (Good for 75pax)</h2>';
+         } elseif ($pax == 'rectangle') {
+            echo '<h2 class="event-type">Rectangle (Good for 100pax)</h2>';
+         }
+        ?>
+        <form action="packlunch.php" class="select_type" method="get">
             <select name="pax" id="">
                 <option value="round">Round</option>
                 <option value="oblong">Oblong</option>
-                <option value="Rectangle">Rectangle</option>
+                <option value="rectangle">Rectangle</option>
             </select>
-            <button type="submit" class='btn-sub'>Submit</button>
+            <button type="submit" class='btn-sub' name="type-sub">Submit</button>
         </form>
         <form action="packlunch.php" method="get">
             <div class="menu">
@@ -30,98 +125,55 @@
                 </div>
 
                 <div class="dishes" id="beef">
-                    <label class="menu-list packlunch">
+                
+                <?php foreach($beef as $beef):?>
+            
+                     <label class="menu-list packlunch">
+                        <input type="radio" name="menu" id="#" value="<?php echo $beef['pack_id'] ?>">
+                        <h2 class="menu-name"><?php echo $beef['name']; ?></h2>
+                        <hr>
+                        <h2 class="menu-price"> <span class="amount">₱ <?php echo $beef['price']; ?></span></h2>
+                        <span class="bg"></span>
+                    </label>
+
+                <?php endforeach; ?>
+
+                    <!-- <label class="menu-list packlunch">
                         <input type="radio" name="menu" id="#" value="1">
                         <h2 class="menu-name">Tiyula Itum</h2>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
                         <span class="bg"></span>
-                    </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="2">
-                        <h2 class="menu-name">Kulma</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="3">
-                        <h2 class="menu-name">Kari-Kari</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="4">
-                        <h2 class="menu-name">Beef Steak</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
+                    </label> -->
                 </div>
                 <!-- Chicken -->          
                 <div class="dishes hide" id="chicken">
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="5">
-                        <h2 class="menu-name">Chicken Teriyaki</h2>
+                <?php foreach($chicken as $chicken):?>
+            
+                     <label class="menu-list packlunch">
+                        <input type="radio" name="menu" id="#" value="<?php echo $chicken['pack_id'] ?>">
+                        <h2 class="menu-name"><?php echo $chicken['name']; ?></h2>
                         <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
+                        <h2 class="menu-price"> <span class="amount">₱ <?php echo $chicken['price']; ?></span></h2>
                         <span class="bg"></span>
                     </label>
 
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="7">
-                        <h2 class="menu-name">Chicken Adobo</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="8">
-                        <h2 class="menu-name">Fried Chicken</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
+                <?php endforeach; ?>
                 </div>
 
                 <!-- Seafood -->
                 <div class="dishes hide" id="seafood">
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="9">
-                        <h2 class="menu-name">Shrimp w/ Garlic</h2>
+                <?php foreach($seafood as $seafood):?>
+            
+                     <label class="menu-list packlunch">
+                        <input type="radio" name="menu" id="#" value="<?php echo $seafood['pack_id'] ?>">
+                        <h2 class="menu-name"><?php echo $seafood['name']; ?></h2>
                         <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
+                        <h2 class="menu-price"> <span class="amount">₱ <?php echo $seafood['price']; ?></span></h2>
                         <span class="bg"></span>
                     </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="10">
-                        <h2 class="menu-name">Sweet & Spicy Fish</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="11">
-                        <h2 class="menu-name">Camaron Rebusado</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="12">
-                        <h2 class="menu-name">Squid Barbeque</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
-                    <label class="menu-list packlunch">
-                        <input type="radio" name="menu" id="#" value="12">
-                        <h2 class="menu-name">Squid Barbeque</h2>
-                        <hr>
-                        <h2 class="menu-price"> <span class="amount">₱ 2,500</span></h2>
-                        <span class="bg"></span>
-                    </label>
+
+                <?php endforeach; ?>
                 </div>
                 <!-- end -->
             </div>
@@ -131,30 +183,20 @@
                     <hr>
                 </div>
                 <div class="dishes">
+                <?php foreach($addons as $addons): ?>
                     <label class="addons-list">
+                        <input type="radio" name="addon" value="<?php $addons['paddon_id']?>" id="" required>
+                        <h2 class="addon-title"><?php echo $addons['name']; ?></h2>
+                        <h3 class="addon-price"><span class="amount">₱ <?php echo $addons['price']; ?></span></h3>
+                        <span class="bg"></span>
+                    </label>
+                <?php endforeach;?>
+                    <!-- <label class="addons-list">
                         <input type="radio" name="addon" value="1" id="" required>
                         <h2 class="addon-title">Bihon</h2>
                         <h3 class="addon-price"><span class="amount">₱ 2,500</span></h3>
                         <span class="bg"></span>
-                    </label>
-                    <label class="addons-list">
-                        <input type="radio" name="addon" value="2" id="">
-                        <h2 class="addon-title">Sotanghon</h2>
-                        <h3 class="addon-price"><span class="amount">₱ 2,500</span></h3>
-                        <span class="bg"></span>
-                    </label>
-                    <label class="addons-list">
-                        <input type="radio" name="addon" value="3" id="">
-                        <h2 class="addon-title">Pancit Udang</h2>
-                        <h3 class="addon-price"><span class="amount">₱ 2,500</span></h3>
-                        <span class="bg"></span>
-                    </label>
-                    <label class="addons-list">
-                        <input type="radio" name="addon" value="4" id="">
-                        <h2 class="addon-title">Veggies</h2>
-                        <h3 class="addon-price"><span class="amount">₱ 2,500</span></h3>
-                        <span class="bg"></span>
-                    </label>
+                    </label> -->
 
                 </div>
             </div>
