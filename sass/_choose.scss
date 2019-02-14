@@ -31,17 +31,17 @@ body#choose {
       cursor: pointer;
       transition: all 0.5s ease-out;
       &.wedding {
-        background: url('../img/wedding.jpeg');
+        background: url("../img/wedding.jpeg");
         background-size: cover;
         background-position: center;
       }
       &.catering {
-        background: url('../img/catering.jpg');
+        background: url("../img/catering.jpg");
         background-size: cover;
         background-position: center;
       }
       &.packlunch {
-        background: url('../img/packlunch.jpeg');
+        background: url("../img/packlunch.jpeg");
         background-size: cover;
         background-position: center;
       }
@@ -61,7 +61,7 @@ body#choose {
         transform: scale(0.98);
         color: #fff;
         font-size: 2.5rem;
-        font-weight: 800;
+        font-weight: 600;
 
         &::before {
           display: flex;
@@ -78,7 +78,7 @@ body#choose {
     }
 
     .img::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;

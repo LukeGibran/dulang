@@ -1,8 +1,10 @@
 <?php 
 session_start();
 
-$username = $_SESSION['username'];
-$name = $_SESSION['name'];
+if(isset($_SESSION['username'])){
+    $username = $_SESSION['username'];
+    $name = $_SESSION['name'];
+}
 
 ?>
 
@@ -26,7 +28,7 @@ $name = $_SESSION['name'];
             <li class="nav-item"><a href="index.php" class="nav-link" ><i class="fa fa-home"></i>Home</a> </li>
             <li class="nav-item"> <a href="#" class="nav-link"> <i class="fa fa-edit"></i>Schedule a Reservation</a></li>
             <?php 
-                if($_SESSION['username']){
+                if(isset($_SESSION['username'])){
                     echo '<li class="nav-item"><a href="logout.php" class="nav-link"><i class="fa fa-sign-out-alt"> </i>Log out</a></li>';
                 } else{
                     echo '<li class="nav-item"><a href="signup.php" class="nav-link"><i class="fa fa-address-card"> </i>Sign up</a></li>';

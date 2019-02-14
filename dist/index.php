@@ -1,8 +1,12 @@
 <?php 
 session_start();
 
+if(isset($_SESSION['username'])){
 $username = $_SESSION['username'];
 $name = $_SESSION['name'];
+}
+
+
 
 ?>
 
@@ -23,15 +27,15 @@ $name = $_SESSION['name'];
             <h1>Dulang</h1>
 
             <?php
-                if($_SESSION['username']){
+                if(isset($_SESSION['username'])){
                     echo '<a href="#" class="login-link"><i class="fas fa-user"></i> '.$username.'</a>';
                 } else{
                     echo '<a href="login.php" class="login-link"><i class="fas fa-user"></i> Login</a>';
                 }
 
-                if($_GET['success']){
+                if(isset($_GET['success'])){
                     echo '<span class="success" ><i class="fas fa-check"></i>Welcome '.$username.'!</span>';
-                } elseif ($_GET['logout']) {
+                } elseif (isset($_GET['logout'])) {
                     echo '<span class="warn" ><i class="fas fa-check"></i>You\'ve logout</span>';
                 }
             ?>
@@ -48,7 +52,7 @@ $name = $_SESSION['name'];
             <li class="nav-item"> <a href="choose.php" class="nav-link"> <i class="fa fa-edit"></i>Schedule a Reservation</a></li>
 
             <?php 
-                if($_SESSION['username']){
+                if(isset($_SESSION['username'])){
                     echo '<li class="nav-item"><a href="logout.php" class="nav-link"><i class="fa fa-sign-out-alt"> </i>Log out</a></li>';
                 } else{
                     echo '<li class="nav-item"><a href="signup.php" class="nav-link"><i class="fa fa-address-card"> </i>Sign up</a></li>';

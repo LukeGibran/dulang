@@ -54,7 +54,7 @@ function getAddons($pax){
     $addons = "SELECT * from packlunch_addon WHERE pax = '$pax'";
     if($result_a = mysqli_query($conn, $addons)){
        $addons_posts = mysqli_fetch_all($result_a, MYSQLI_ASSOC);
-       mysqli_free_result($result);
+       mysqli_free_result($result_a);
 
        return $addons_posts;
    }else{
@@ -72,7 +72,6 @@ if(isset($_GET['type-sub'])){
     $seafood = getSeafood($pax);
     $addons = getAddons($pax);
 
-    mysqli_close($conn);
 }else{
     $pax = 'round';
 
@@ -81,7 +80,6 @@ if(isset($_GET['type-sub'])){
     $seafood = getSeafood($pax);
     $addons = getAddons($pax);
 
-    mysqli_close($conn);
 }
 ?>
 

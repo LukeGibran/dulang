@@ -24,7 +24,7 @@
      $addons = "SELECT * from catering_addon";
      if($result_m = mysqli_query($conn, $addons)){
         $addons_posts = mysqli_fetch_all($result_m, MYSQLI_ASSOC);
-        mysqli_free_result($result);
+        mysqli_free_result($result_m);
         mysqli_close($conn);
     }else{
         echo 'Error: ' . mysqli_error($conn);

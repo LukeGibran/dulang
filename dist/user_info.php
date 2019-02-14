@@ -93,11 +93,6 @@ if(isset($_GET['order-submit'])){
     }
     // END OF PACKLUNCH 
 
-    // Free Result
-    mysqli_free_result($formenu,$for_addon);
-
-    // Close Connection
-    mysqli_close($conn);
  
     } else{
         header('Location: login.php');
