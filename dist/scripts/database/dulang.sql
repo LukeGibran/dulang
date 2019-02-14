@@ -156,17 +156,21 @@ DROP TABLE IF EXISTS `reciept`;
 CREATE TABLE `reciept` (
   `r_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `event_id` int(11) DEFAULT NULL,
-  `addon_id` int(11) DEFAULT NULL,
+  `event` tinytext,
   `event_date` date DEFAULT NULL,
   `event_time` time DEFAULT NULL,
-  `no_guest` tinyint(4) DEFAULT NULL,
+  `menu` tinytext,
+  `menu_price` double DEFAULT NULL,
+  `addon` tinytext,
+  `addon_price` double DEFAULT NULL,
+  `no_guest` double DEFAULT NULL,
   `datenow` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `event_location` mediumtext,
   `total` double DEFAULT NULL,
   `status` tinytext,
+  `r_code` tinytext,
   PRIMARY KEY (`r_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +179,7 @@ CREATE TABLE `reciept` (
 
 LOCK TABLES `reciept` WRITE;
 /*!40000 ALTER TABLE `reciept` DISABLE KEYS */;
+INSERT INTO `reciept` VALUES (5,1,'wedding','2019-02-15','02:01:00','Two-layer',8500,'Boat',6800,123,'2019-02-14 00:19:12','zamboanga',15300,'Pending','dulangQRAa'),(6,1,'catering','2019-02-23','13:02:00','Set 3',160,'Set 2',130,119,'2019-02-14 00:45:12','zamboanga',34510,'Pending','dulangxRlU');
 /*!40000 ALTER TABLE `reciept` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,4 +272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-14  5:50:29
+-- Dump completed on 2019-02-14  8:49:38
