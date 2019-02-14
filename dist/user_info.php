@@ -24,7 +24,7 @@ if(isset($_GET['order-submit'])){
         if($menu_result = mysqli_query($conn, $formenu)){
             $menu_pick = mysqli_fetch_assoc($menu_result);
         }else{
-            echo 'Error: ' . mysqli_error();
+            echo 'Error: ' . mysqli_error($conn);
         }
     
     $for_addon = "SELECT * from wedding_addon WHERE waddon_id = '$addon'";
@@ -33,7 +33,7 @@ if(isset($_GET['order-submit'])){
         $addon_pick = mysqli_fetch_assoc($addon_result);
 
     }else{
-        echo 'Error: ' . mysqli_error();
+        echo 'Error: ' . mysqli_error($conn);
 
     }
 
@@ -52,7 +52,7 @@ if(isset($_GET['order-submit'])){
         if($menu_result = mysqli_query($conn, $formenu)){
             $menu_pick = mysqli_fetch_assoc($menu_result);
         }else{
-            echo 'Error: ' . mysqli_error();
+            echo 'Error: ' . mysqli_error($conn);
         }
     
     $for_addon = "SELECT * from catering_addon WHERE caddon_id = '$addon'";
@@ -61,7 +61,7 @@ if(isset($_GET['order-submit'])){
         $addon_pick = mysqli_fetch_assoc($addon_result);
 
     }else{
-        echo 'Error: ' . mysqli_error();
+        echo 'Error: ' . mysqli_error($conn);
 
     }
     } // END CATERING
@@ -77,7 +77,7 @@ if(isset($_GET['order-submit'])){
         if($menu_result = mysqli_query($conn, $formenu)){
             $menu_pick = mysqli_fetch_assoc($menu_result);
         }else{
-            echo 'Error: ' . mysqli_error();
+            echo 'Error: ' . mysqli_error($conn);
         }
 
 
@@ -87,7 +87,7 @@ if(isset($_GET['order-submit'])){
         $addon_pick = mysqli_fetch_assoc($addon_result);
 
     }else{
-        echo 'Error: ' . mysqli_error();
+        echo 'Error: ' . mysqli_error($conn);
 
     }
     }
@@ -125,7 +125,7 @@ else{
 <body id="user_info">
     <div class="wrapper">
         <h1 class="user-title">Order's information</h1>
-        <form action="user_info.php" method="get">
+        <form action="scripts/reciept.inc.php" method="post">
             <div class="first-part">
                 <div class="form-control">
                 <label for="name">Name</label>
@@ -168,7 +168,8 @@ else{
                 <div class="dishes">
                    <?php if($type == 'wedding'):?>
                 <label class="menu-list">
-                        <input type="text" name="menu" id="#" value="<?php echo $menu; ?>" hidden>
+                        <input type="text" name="menu" id="#" value="<?php echo $menu_pick['name']; ?>" hidden>
+                        <input type="text" name="menu_price" id="#" value="<?php echo $menu_pick['price']; ?>" hidden>
                         <h1 class="menu-name"><?php echo $menu_pick['name']; ?></h1>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ <?php echo $menu_pick['price']?></span></h2>
@@ -177,7 +178,8 @@ else{
                 </label>
 
                 <label class="addons-list -wedding">
-                        <input type="text" name="addon" value="<?php echo $addon; ?>" id="" hidden>
+                        <input type="text" name="addon" value="<?php echo $addon_pick['name'];?>" id="" hidden>
+                        <input type="text" name="addon_price" value="<?php echo $addon_pick['price'];?>" id="" hidden>
                         <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
                         <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'] ?></span></h3>
                 </label>
@@ -185,7 +187,8 @@ else{
 
                 <?php if($type == 'catering'): ?>
                 <label class="menu-list">
-                        <input type="text" name="menu" id="#" value="<?php echo $menu; ?>" hidden>
+                        <input type="text" name="menu" id="#" value="<?php echo $menu_pick['name']; ?>" hidden>
+                        <input type="text" name="menu_price" id="#" value="<?php echo $menu_pick['price']; ?>" hidden>
                         <h1 class="menu-name"><?php echo $menu_pick['name']; ?></h1>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ <?php echo $menu_pick['price']?> / pax</span></h2>
@@ -194,7 +197,8 @@ else{
                 </label>
 
                 <label class="addons-list -catering">
-                        <input type="text" name="addon" value="<?php echo $addon;?>" id="" hidden>
+                        <input type="text" name="addon" value="<?php echo $addon_pick['name'];?>" id="" hidden>
+                        <input type="text" name="addon_price" value="<?php echo $addon_pick['price'];?>" id="" hidden>
                         <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
                         <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'] ?> / pax</span></h3>
                         <h3 class="menu-dishes">Dishes: </h3>
@@ -204,7 +208,8 @@ else{
 
                 <?php if($type == 'packlunch'): ?>
                      <label class="menu-list packlunch" required>
-                        <input type="text" name="menu" id="#" value="<?php echo $menu; ?>" hidden>
+                        <input type="text" name="menu" id="#" value="<?php echo $menu_pick['name']; ?>" hidden>
+                        <input type="text" name="menu_price" id="#" value="<?php echo $menu_pick['price']; ?>" hidden>
                         <h2 class="menu-name"><?php echo $menu_pick['name']; ?></h2>
                         <hr>
                         <h2 class="menu-price"> <span class="amount">₱ <?php echo $menu_pick['price']; ?></span></h2>
@@ -212,7 +217,8 @@ else{
                     </label>
 
                     <label class="addons-list -wedding">
-                        <input type="text" name="addon" value="<?php echo $addon; ?>" id="" hidden>
+                         <input type="text" name="addon" value="<?php echo $addon_pick['name'];?>" id="" hidden>
+                        <input type="text" name="addon_price" value="<?php echo $addon_pick['price'];?>" id="" hidden>
                         <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
                         <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'];?> / pax</span></h3>
                     </label>

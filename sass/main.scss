@@ -3,10 +3,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  input:focus {
+    outline: none !important;
+  }
 }
 
 *::before {
   box-sizing: border-box;
+}
+
+*:focus {
+  outline: none !important;
 }
 
 body {

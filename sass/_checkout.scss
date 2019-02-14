@@ -63,6 +63,8 @@
             align-items: center;
             margin-bottom: 1.5rem;
             .r-title {
+              font-family: 'Dancing Script';
+              font-size: 2.5rem;
               color: $primary;
             }
           }
@@ -80,6 +82,12 @@
                 color: #fff;
                 background: $primary;
                 padding: 0 5px;
+              }
+
+              .code {
+                color: #fff;
+                background: $primary;
+                padding: 2px 5px;
               }
 
               .u-status {

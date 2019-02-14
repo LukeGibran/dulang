@@ -77,6 +77,9 @@
     font-size: 12px;
   }
 
+  .box .inputBox input:focus {
+    outline: none !important;
+  }
   .box input[type='submit'] {
     background: $primary_dark;
     outline: none;
