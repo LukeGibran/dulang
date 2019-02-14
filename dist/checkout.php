@@ -42,7 +42,7 @@ if(isset($_SESSION['userId'])){
     <div class="c-wrapper">
         <h1 class="checkout-title">Your Receipt</h1>
         <div class="btns">
-        <a href="#" target="_blank" class="btn-print"><i class="fas fa-print"></i> Print</a>
+        <a href="print.php?code=<?php echo $code ?>" target="_blank" class="btn-print"><i class="fas fa-print"></i> Print</a>
         <a href="index.php"  class="btn-home"><i class="fas fa-home"></i> Home</a>
         </div>
 
@@ -89,8 +89,8 @@ if(isset($_SESSION['userId'])){
                         </div>
                     </div>
                 </div>
-            </div> <!-- end of receipt -->
             </div>
+            </div> <!-- end of receipt -->
             <div class="information">
                 <div class="info-order">
                     <form action="#">

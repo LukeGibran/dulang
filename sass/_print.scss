@@ -1,0 +1,58 @@
+#print {
+  .reciept-bg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .reciept {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+
+      .reciept-info {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        .r-title {
+          font-family: 'Dancing Script';
+          font-size: 3rem;
+          color: $primary;
+        }
+      }
+      .user-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        h3 {
+          margin-bottom: 5px;
+        }
+
+        .user-value {
+          margin-bottom: 3rem;
+          .price {
+            color: $primary_dark;
+            padding: 0 5px;
+          }
+
+          .code {
+            color: #fff;
+            color: $primary_dark;
+            padding: 2px 5px;
+          }
+
+          .u-status {
+            color: goldenrod;
+          }
+        }
+
+        .t-amount {
+          color: $primary_dark;
+        }
+      }
+    }
+  }
+}
