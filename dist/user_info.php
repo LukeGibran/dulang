@@ -23,6 +23,9 @@ if(isset($_GET['order-submit'])){
 
         if($menu_result = mysqli_query($conn, $formenu)){
             $menu_pick = mysqli_fetch_assoc($menu_result);
+
+            $_SESSION['rec'] = $menu_pick['recommendation'];
+            $_SESSION['menu_id'] = $menu;
         }else{
             echo 'Error: ' . mysqli_error($conn);
         }
@@ -51,6 +54,9 @@ if(isset($_GET['order-submit'])){
 
         if($menu_result = mysqli_query($conn, $formenu)){
             $menu_pick = mysqli_fetch_assoc($menu_result);
+
+            $_SESSION['rec'] = $menu_pick['recommendation'];
+            $_SESSION['menu_id'] = $menu;
         }else{
             echo 'Error: ' . mysqli_error($conn);
         }
@@ -76,6 +82,9 @@ if(isset($_GET['order-submit'])){
 
         if($menu_result = mysqli_query($conn, $formenu)){
             $menu_pick = mysqli_fetch_assoc($menu_result);
+
+            $_SESSION['rec'] = $menu_pick['recommendation'];
+            $_SESSION['menu_id'] = $menu;
         }else{
             echo 'Error: ' . mysqli_error($conn);
         }
@@ -93,6 +102,25 @@ if(isset($_GET['order-submit'])){
     }
     // END OF PACKLUNCH 
 
+
+    if(isset($_SESSION['update_code'])){
+        $code = $_SESSION['update_code'];
+
+        $reciept = "SELECT * from reciept WHERE r_code = '$code'";
+        
+        if($reciept_result = mysqli_query($conn, $reciept)){
+            $r = mysqli_fetch_assoc($reciept_result);
+
+        }else{
+            echo 'Error: ' . mysqli_error($conn);
+        }
+    }
+
+    // Free Result
+    mysqli_free_result($formenu,$for_addon);
+
+    // Close Connection
+    mysqli_close($conn);
  
     } else{
         header('Location: login.php');
@@ -134,24 +162,24 @@ else{
                 
                 <div class="form-control">
                 <label for="location">Event Location</label>
-                <input type="text" name="location" id="" required>
+                <input type="text" name="location" id="" value="<?php echo $r['event_location']; ?>" required>
                 </div>
             </div>
             
             <div class="second-part">
                 <div class="form-control">
                 <label for="time">Time of Event</label>
-                <input type="time" name="time" id="" required>
+                <input type="time" name="time" id="" value="<?php echo $r['event_time']; ?>" required>
                 </div>
                 
                 <div class="form-control">
                 <label for="date">Date of Event</label>
-                <input type="date" name="date" id="">
+                <input type="date" name="date" value="<?php echo $r['event_date']; ?>" id="">
                 </div>
 
                 <div class="form-control">
                 <label for="guest">Number of Guests</label>
-                <input type="number" name="guest" id="" required>
+                <input type="number" name="guest" value="<?php echo $r['no_guest']; ?>" id="" required>
                 </div>
             </div>
 

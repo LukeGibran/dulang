@@ -4,6 +4,23 @@
   overflow: auto;
   padding: 3rem 5rem;
 
+  .choose {
+    display: flex;
+    .main-choose {
+      width: 80%;
+      margin-right: 2rem;
+    }
+    .side-choose {
+      width: 20%;
+      display: flex;
+      flex-flow: column;
+      flex-wrap: wrap;
+      margin-right: 2rem;
+      &.-catering {
+        margin-left: 2rem;
+      }
+    }
+  }
   .event-title {
     align-self: center;
     font-size: 4.5rem;
@@ -55,7 +72,7 @@
 
     .dishes {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-gap: 2rem;
       justify-items: center;
       margin: 2rem 0;
@@ -103,6 +120,11 @@
 
       &.hide {
         display: none;
+      }
+
+      &.-side {
+        display: flex;
+        flex-flow: column;
       }
     }
   }

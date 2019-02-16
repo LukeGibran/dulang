@@ -1,6 +1,6 @@
 #checkout {
   .c-wrapper {
-    padding: 2rem 5rem 0 5rem;
+    padding: 2rem 5rem;
     display: flex;
     flex-flow: column;
 
@@ -145,7 +145,44 @@
           color: $green;
         }
 
+        .btn-blue {
+          color: #fff;
+          background: $blue;
+          padding: 5px 10px;
+          border: 3px solid $blue;
+          cursor: pointer;
+          height: 35px;
+          width: 100px;
+        }
+
+        .btn-blue:hover {
+          background: #fff;
+          border: 3px solid $blue;
+          color: $blue;
+        }
+
+        .btn-red {
+          color: #fff;
+          background: $red;
+          padding: 5px 10px;
+          border: 3px solid $red;
+          cursor: pointer;
+          height: 35px;
+          width: 100px;
+        }
+
+        .btn-red:hover {
+          background: #fff;
+          border: 3px solid $red;
+          color: $red;
+        }
+
         margin-bottom: 3.5rem;
+
+        &.--settings {
+          height: 100px;
+          border: none;
+        }
       }
 
       .addons {

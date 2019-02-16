@@ -47,6 +47,7 @@ if(isset($_SESSION['userId'])){
         </div>
 
         <div class="components"> <!-- Components -->
+        <?php if($row): ?>
           <div class="reciept-bg">
             <div class="reciept">
                 <div class="reciept-info">
@@ -91,6 +92,19 @@ if(isset($_SESSION['userId'])){
                 </div>
             </div>
             </div> <!-- end of receipt -->
+            <div class="information --settings">
+                <div class="info-order">
+                    <form action="scripts/setReciept.inc.php">
+                    <input type="text" value="<?php echo $code; ?>" name="code" hidden>
+                    <input type="text" name="type" value="<?php echo $row['event']; ?>" id="" hidden>
+                        <button class="btn-blue" type="submit" name="update">Update</button>
+                        <button class="btn-red" type="submit" name="remove" >Remove</button>
+                    </form>
+                </div>
+            </div> <!-- End of Info -->
+            <?php endif; ?>
+            <?php if(!$row): ?>
+            <h1>No result found, please try again</h1>
             <div class="information">
                 <div class="info-order">
                     <form action="#">
@@ -100,9 +114,9 @@ if(isset($_SESSION['userId'])){
                     </form>
                 </div>
             </div> <!-- End of Info -->
-
+            <?php endif; ?>
    
-
+        
          </div>   <!-- end of components -->
 
     </div>
