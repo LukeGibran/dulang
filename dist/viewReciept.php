@@ -9,7 +9,7 @@ if(isset($_SESSION['userId'])){
 
         $code = $_GET['code'];
         $id = $_SESSION['userId'];
-        $query = "SELECT * from reciept WHERE r_code = '$code' AND user_id = '$id'";
+        $query = "SELECT * from reciept WHERE r_code = '$code' AND user_id = '$id' AND status != 'Cancel'";
 
         if($result = mysqli_query($conn, $query)){
             $row = mysqli_fetch_assoc($result);
@@ -26,6 +26,14 @@ if(isset($_SESSION['userId'])){
 } else {
     header('Location: login.php');
 }
+
+
+$date = new DateTime(null, new DateTimeZone('Asia/Manila'));
+$now = strtotime($date->format('F-d-Y'));
+$event = strtotime($row['event_date']);
+
+$total = $event - $now;
+
 ?>
 
 <!DOCTYPE html>
@@ -39,10 +47,15 @@ if(isset($_SESSION['userId'])){
     <link rel="stylesheet" href="css/all.min.css">
 </head>
 <body id="checkout">
+    <div class="modal hide">
+        <h3><i class="fas fa-exclamation-triangle"></i> Are you sure? <a href="scripts/remove.inc.php?code=<?php echo $code;?>">Yes</a> <a href="#" id="no">No</a></h3>
+    </div>
     <div class="c-wrapper">
         <h1 class="checkout-title">Your Receipt</h1>
         <div class="btns">
+        <?php if($row): ?>
         <a href="print.php?code=<?php echo $code ?>" target="_blank" class="btn-print"><i class="fas fa-print"></i> Print</a>
+        <?php endif; ?>
         <a href="index.php"  class="btn-home"><i class="fas fa-home"></i> Home</a>
         </div>
 
@@ -98,27 +111,35 @@ if(isset($_SESSION['userId'])){
                     <input type="text" value="<?php echo $code; ?>" name="code" hidden>
                     <input type="text" name="type" value="<?php echo $row['event']; ?>" id="" hidden>
                         <button class="btn-blue" type="submit" name="update">Update</button>
-                        <button class="btn-red" type="submit" name="remove" >Remove</button>
+                        <?php if($total > 259200): ?>
+                        <a class="btn-red -link"  name="remove" id="remove" >Cancel Order</a>
+                        <?php endif; ?>
                     </form>
+
                 </div>
             </div> <!-- End of Info -->
             <?php endif; ?>
             <?php if(!$row): ?>
+            <div class="no-result">
             <h1>No result found, please try again</h1>
             <div class="information">
                 <div class="info-order">
-                    <form action="#">
-                        <label for="order_id">Check Order Details</label>
-                        <input type="text" name="order_id"  id="order">
-                        <button class="btn-green" type="submit">View</button>
-                    </form>
+                <form action="viewReciept.php" method="get">
+                    <label for="order_id">Check Order Details</label>
+                    <input type="text" name="code"  id="order">
+                    <button class="btn-green" type="submit">View</button>
+                </form>
                 </div>
             </div> <!-- End of Info -->
+            </div>
+
             <?php endif; ?>
    
         
          </div>   <!-- end of components -->
 
     </div>
+
+    <script src="js/confirm.js"></script>
 </body>
 </html>

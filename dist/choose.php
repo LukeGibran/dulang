@@ -29,6 +29,7 @@ if(isset($_SESSION['username'])){
             <li class="nav-item"> <a href="#" class="nav-link"> <i class="fa fa-edit"></i>Schedule a Reservation</a></li>
             <?php 
                 if(isset($_SESSION['username'])){
+                    echo '<li class="nav-item"><a href="feedback.php" class="nav-link"><i class="fa fa-envelope"> </i>Feedback</a></li>';
                     echo '<li class="nav-item"><a href="logout.php" class="nav-link"><i class="fa fa-sign-out-alt"> </i>Log out</a></li>';
                 } else{
                     echo '<li class="nav-item"><a href="signup.php" class="nav-link"><i class="fa fa-address-card"> </i>Sign up</a></li>';

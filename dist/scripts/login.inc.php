@@ -9,7 +9,30 @@ if(isset($_POST['login-submit'])){
     if( empty($username) || empty($password) ){
         header("Location: ../login.php?error=true");
         exit();
-    } else{
+    }elseif($username == 'admin' || $username == 'Admin' || $username == 'ADMIN'){
+
+        $query = "SELECT * FROM admin WHERE username = '$username'";
+
+        if($result = mysqli_query($conn, $query)){
+            $row = mysqli_fetch_assoc($result);
+            $passwordVerify = password_verify($password, $row['password']);
+
+            if($passwordVerify == false){
+                header('Location: ../login.php?error=true');
+                exit();
+            }else if($passwordVerify == true){
+                session_start();
+                $_SESSION['adminUser'] = $row['username'];
+                header('Location: ../admin/home.admin.php?success=true');
+                exit();
+            }
+
+        }else{
+            echo 'Error:' . mysqli_error($conn);
+        }
+
+
+    }else{
 
         $query = "SELECT * FROM user WHERE username = '$username'";
 

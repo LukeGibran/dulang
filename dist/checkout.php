@@ -93,11 +93,11 @@ if(isset($_SESSION['userId'])){
             </div> <!-- end of receipt -->
             <div class="information">
                 <div class="info-order">
-                    <form action="#">
-                        <label for="order_id">Check Order Details</label>
-                        <input type="text" name="order_id"  id="order">
-                        <button class="btn-green" type="submit">View</button>
-                    </form>
+                <form action="viewReciept.php" method="get">
+                    <label for="order_id">Check Order Details</label>
+                    <input type="text" name="code"  id="order">
+                    <button class="btn-green" type="submit">View</button>
+                </form>
                 </div>
             </div> <!-- End of Info -->
 

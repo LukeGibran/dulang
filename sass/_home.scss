@@ -37,12 +37,12 @@
     position: absolute;
     top: 70px;
     right: 150px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: center;
     display: block;
     margin: 10px 30px;
     color: #fff;
-    padding: 5px 15px 5px 5px;
+    padding: 10px 15px 10px 5px;
     i {
       padding: 0 5px;
     }
@@ -53,8 +53,13 @@
     }
 
     &.warn {
-      background: goldenrod;
-      border-left: 5px solid darken($color: goldenrod, $amount: 10);
+      background: $yellow;
+      border-left: 5px solid darken($color: $yellow, $amount: 10);
+    }
+
+    &.danger{
+      background: $red;
+      border-left: 5px solid darken($color: $red, $amount: 10);
     }
   }
 }

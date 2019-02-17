@@ -33,6 +33,8 @@ $name = $_SESSION['name'];
                     echo '<span class="success" ><i class="fas fa-check"></i>Welcome '.$username.'!</span>';
                 } elseif ($_GET['logout']) {
                     echo '<span class="warn" ><i class="fas fa-check"></i>You\'ve logout</span>';
+                } elseif($_GET['message']){
+                    echo '<span class="danger" ><i class="fas fa-exclamation-triangle"></i>Order Cancelled</span>';
                 }
             ?>
             
@@ -48,11 +50,13 @@ $name = $_SESSION['name'];
             <li class="nav-item"> <a href="choose.php" class="nav-link"> <i class="fa fa-edit"></i>Schedule a Reservation</a></li>
 
             <?php 
-                if($_SESSION['username']){
+                if(isset($_SESSION['username'])){
+                    echo '<li class="nav-item"><a href="feedback.php" class="nav-link"><i class="fa fa-envelope"> </i>Feedback</a></li>';
                     echo '<li class="nav-item"><a href="logout.php" class="nav-link"><i class="fa fa-sign-out-alt"> </i>Log out</a></li>';
                 } else{
                     echo '<li class="nav-item"><a href="signup.php" class="nav-link"><i class="fa fa-address-card"> </i>Sign up</a></li>';
                 }
+
             ?>
        
             

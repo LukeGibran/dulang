@@ -20,7 +20,7 @@ if(isset($_POST['signup-submit'])){
 
         $query_check = "SELECT * FROM user WHERE username = '$username'";
         $result_check = mysqli_query($conn, $query_check);
-        if(mysqli_num_rows($result_check) > 0){
+        if(mysqli_num_rows($result_check) > 0 || $username == 'admin'){
             header('Location: ../signup.php?error=username');
             exit();
         } else {

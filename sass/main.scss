@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Dancing+Script:700");
+// @import url("https://fonts.googleapis.com/css?family=Dancing+Script:700");
 * {
   margin: 0;
   padding: 0;
@@ -33,4 +33,6 @@ main {
 @import "login";
 @import "signup";
 @import "print";
+@import "feedback";
+@import "admin";
 @import "footer";
