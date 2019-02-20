@@ -1,40 +1,83 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['userId'])){
+if(isset($_SESSION['adminUser'])){
 
     if(isset($_GET['code'])){
 
-        require ('scripts/database/db.php');
+        require ('../scripts/database/db.php');
 
         $code = $_GET['code'];
-        $id = $_SESSION['userId'];
-        $query = "SELECT * from reciept WHERE r_code = '$code' AND user_id = '$id'";
+        $type = $_GET['type'];
 
-        if($result = mysqli_query($conn, $query)){
-            $row = mysqli_fetch_assoc($result);
-            $type = $row['status'];
-            mysqli_free_result($result);
-            mysqli_close($conn);
-        }else{
-            echo 'Error: ' . mysqli_error($conn);
+        if($type == 'pending'){
+            $query = "SELECT * FROM reciept WHERE r_code = '$code' AND status = 'pending'";
+
+            if($result = mysqli_query($conn, $query)){
+                $row = mysqli_fetch_assoc($result);
+                $userId = $row['user_id'];
+                $query_user = "SELECT * FROM user WHERE user_id = '$userId' LIMIT 1";
+    
+                if($result_u = mysqli_query($conn, $query_user)){
+                    $user = mysqli_fetch_assoc($result_u);
+    
+                } else {
+                    echo 'Error: ' . mysqli_error($conn);
+                }
+            }else{
+                echo 'Error: ' . mysqli_error($conn);
+            }
+    
+        }elseif($type == 'confirm'){
+            $query = "SELECT * FROM reciept WHERE r_code = '$code' AND status = 'confirm'";
+
+            if($result = mysqli_query($conn, $query)){
+                $row = mysqli_fetch_assoc($result);
+                $userId = $row['user_id'];
+                $query_user = "SELECT * FROM user WHERE user_id = '$userId' LIMIT 1";
+    
+                if($result_u = mysqli_query($conn, $query_user)){
+                    $user = mysqli_fetch_assoc($result_u);
+    
+                } else {
+                    echo 'Error: ' . mysqli_error($conn);
+                }
+            }else{
+                echo 'Error: ' . mysqli_error($conn);
+            }
+    
+        } elseif($type == 'cancel'){
+            $query = "SELECT * FROM reciept WHERE r_code = '$code' AND status = 'cancel'";
+
+            if($result = mysqli_query($conn, $query)){
+                $row = mysqli_fetch_assoc($result);
+                $userId = $row['user_id'];
+                $query_user = "SELECT * FROM user WHERE user_id = '$userId' LIMIT 1";
+    
+                if($result_u = mysqli_query($conn, $query_user)){
+                    $user = mysqli_fetch_assoc($result_u);
+    
+                } else {
+                    echo 'Error: ' . mysqli_error($conn);
+                }
+            }else{
+                echo 'Error: ' . mysqli_error($conn);
+            }
+    
         }
 
-    } else{
-        header('Location: index.php');
+        
     } 
-
 } else {
-    header('Location: login.php');
+    header('Location: ../login.php');
 }
 
 
-$date = new DateTime(null, new DateTimeZone('Asia/Manila'));
-$now = strtotime($date->format('F-d-Y'));
-$event = strtotime($row['event_date']);
+// $date = new DateTime(null, new DateTimeZone('Asia/Manila'));
+// $now = strtotime($date->format('F-d-Y'));
+// $event = strtotime($row['event_date']);
 
-$total = $event - $now;
-
+// $total = $event - $now;
 
 ?>
 
@@ -45,25 +88,25 @@ $total = $event - $now;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dulang</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/all.min.css">
 </head>
-<body id="checkout">
+<body id="admin_view">
     <div class="modal hide">
         <h3><i class="fas fa-exclamation-triangle"></i> Are you sure? <a href="scripts/remove.inc.php?code=<?php echo $code;?>">Yes</a> <a href="#" id="no">No</a></h3>
     </div>
     <div class="c-wrapper">
-        <h1 class="checkout-title">Your Receipt</h1>
+        <h1 class="checkout-title"><?php echo $user['name'] ?>'s Reciept</h1>
         <div class="btns">
         <?php if($row): ?>
-        <a href="print.php?code=<?php echo $code ?>" target="_blank" class="btn-print"><i class="fas fa-print"></i> Print</a>
+        <a href="print.admin.php?code=<?php echo $code ?>" target="_blank" class="btn-print"><i class="fas fa-print"></i> Print</a>
         <?php endif; ?>
-        <a href="index.php"  class="btn-home"><i class="fas fa-home"></i> Home</a>
+        <a href="home.admin.php"  class="btn-home"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         </div>
 
         <div class="components"> <!-- Components -->
         <?php if($row): ?>
-          <div class="reciept-bg <?php if($type == 'pending' || $type == 'Pending') echo '--pending'; ?>">
+          <div class="reciept-bg <?php if($type == 'pending') echo '--pending'; ?>">
             <div class="reciept">
                 <div class="reciept-info">
                     <h1 class="r-title">Dulang Catering Services</h1>
@@ -87,7 +130,7 @@ $total = $event - $now;
 
                     <div class="user-value">
                     <h3 class="u-code"><span class="code"><?php echo $row['r_code']; ?></span></h3>
-                    <h3 class="u-name"><?php echo $_SESSION['name']; ?></h3>
+                    <h3 class="u-name"><?php echo $user['name']; ?></h3>
                     <h3 class="u-event"><?php echo $row['event']; ?></h3>
                     <h3 class="u-order"><?php echo $row['menu']; ?> <span class="price">₱ <?php echo $row['menu_price']; ?></span></h3>
                     <h3 class="u-addons"><?php echo $row['addon']; ?> <span class="price">₱ <?php echo $row['addon_price']; ?></span></h3>
@@ -115,28 +158,23 @@ $total = $event - $now;
                 </div>
             </div>
             </div> <!-- end of receipt -->
-            <?php if($type == 'pending' || $type == 'Pending'): ?>
-            <div class="information --settings">
 
+            <?php if(($type == 'pending')): ?>
+            <div class="information --settings">
                 <div class="info-order">
-                    <form action="scripts/setReciept.inc.php">
-                    <input type="text" value="<?php echo $code; ?>" name="code" hidden>
-                    <input type="text" name="type" value="<?php echo $row['event']; ?>" id="" hidden>
-                        <button class="btn-blue" type="submit" name="update">Update</button>
-                        <?php if($total > 259200): ?>
-                        <a class="btn-red -link"  name="remove" id="remove" >Cancel Order</a>
-                        <?php endif; ?>
-                    </form>
+
+                        <a href="setReciept.admin.php?code=<?php echo $code; ?>&verdict=confirm" class="btn-green --link" type="submit" name="update">Confirm</a>
+                        <a href="setReciept.admin.php?code=<?php echo $code; ?>&verdict=cancel" class="btn-red --link"  name="remove" id="remove" >Cancel Order</a>
 
                 </div>
             </div> <!-- End of Info -->
-            <?php endif; ?>
-
+            <?php endif; ?>  <!--End if for information -->
+            
             <?php endif; ?>
             <?php if(!$row): ?>
             <div class="no-result">
             <h1>No result found, please try again</h1>
-            <div class="information">
+            <!-- <div class="information">
                 <div class="info-order">
                 <form action="viewReciept.php" method="get">
                     <label for="order_id">Check Order Details</label>
@@ -144,7 +182,7 @@ $total = $event - $now;
                     <button class="btn-green" type="submit">View</button>
                 </form>
                 </div>
-            </div> <!-- End of Info -->
+            </div> End of Info -->
             </div>
 
             <?php endif; ?>

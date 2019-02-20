@@ -76,12 +76,12 @@
       display: flex;
       flex-wrap: wrap;
       .reciept-bg {
-        width: 70%;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         .reciept {
-          width: 60%;
+          width: 50%;
           display: flex;
           flex-flow: column;
           justify-content: center;
@@ -123,13 +123,30 @@
               }
 
               .u-status {
-                color: goldenrod;
+                &.warn{
+                  color: $yellow;
+                }
+
+                &.success{
+                  color: $green;
+                }
+
+                &.danger{
+                  color: $red;
+                }
               }
             }
 
             .t-amount {
               color: $primary_dark;
             }
+          }
+        }
+
+        &.--pending{
+          width: 70%;
+          .reciept{
+            width: 60%;
           }
         }
       }

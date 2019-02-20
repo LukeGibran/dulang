@@ -23,7 +23,7 @@ if(isset($_POST['login-submit'])){
             }else if($passwordVerify == true){
                 session_start();
                 $_SESSION['adminUser'] = $row['username'];
-                header('Location: ../admin/home.admin.php?success=true');
+                header('Location: ../admin/home.admin.php?');
                 exit();
             }
 

@@ -14,8 +14,15 @@ if(isset($_SESSION['userId'])){
 
         if($result = mysqli_query($conn, $query)){
             $row = mysqli_fetch_assoc($result);
-            mysqli_free_result($result);
-            mysqli_close($conn);
+            $userId = $row['user_id'];
+            $query_user = "SELECT * FROM user WHERE user_id = '$userId' LIMIT 1";
+
+            if($result_u = mysqli_query($conn, $query_user)){
+                $user = mysqli_fetch_assoc($result_u);
+
+            } else {
+                echo 'Error: ' . mysqli_error($conn);
+            }
         }else{
             echo 'Error: ' . mysqli_error($conn);
         }
@@ -64,14 +71,22 @@ if(isset($_SESSION['userId'])){
 
                     <div class="user-value">
                     <h3 class="u-code"><span class="code"><?php echo $row['r_code']; ?></span></h3>
-                    <h3 class="u-name"><?php echo $_SESSION['name']; ?></h3>
+                    <h3 class="u-name"><?php echo $user['name']; ?></h3>
                     <h3 class="u-event"><?php echo $row['event']; ?></h3>
                     <h3 class="u-order"><?php echo $row['menu']; ?> <span class="price">₱ <?php echo $row['menu_price']; ?></span></h3>
                     <h3 class="u-addons"><?php echo $row['addon']; ?> <span class="price">₱ <?php echo $row['addon_price']; ?></span></h3>
                     <h3 class="u-date"><?php echo date('F-d-Y', strtotime($row['event_date']));?></h3>
                     <h3 class="u-time"><?php echo $row['event_time']; ?></h3>
                     <h3 class="u-guest"><?php echo $row['no_guest']; ?></h3>
-                    <h3 class="u-status"><?php echo $row['status']; ?></h3>
+                    <?php 
+                    if($row['status'] == 'pending' || $row['status'] == 'Pending'){
+                        echo '<h3 class="u-status warn">PENDING</h3>';
+                    } elseif($row['status'] == 'confirm' || $row['status'] == 'Confirm'){
+                        echo '<h3 class="u-status success">CONFIRMED</h3>';
+                    } elseif($row['status'] == 'cancel' || $row['status'] == 'Cancel'){
+                        echo '<h3 class="u-status danger">CANCELLED</h3>';
+                    }
+                    ?>
                     </div>
                     <div class="total-info">
                         <div class="total-placeholder">

@@ -45,7 +45,17 @@
           }
 
           .u-status {
-            color: goldenrod;
+            &.warn{
+              color: $yellow;
+            }
+
+            &.success{
+              color: $green;
+            }
+
+            &.danger{
+              color: $red;
+            }
           }
         }
 
