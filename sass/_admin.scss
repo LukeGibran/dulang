@@ -189,7 +189,7 @@
 
 
             .form-group{
-                margin-bottom: 3rem;
+                margin-bottom: 2rem;
 
                 textarea{
                     width: 100%;
@@ -221,9 +221,11 @@
                     color: #333;
                     margin-top: 1rem;
                     margin-bottom: 10px;
-                    span{
-                        color: $primary_dark;
-                    }
+
+                }
+
+                span{
+                    color: $primary_dark;
                 }
             }
 

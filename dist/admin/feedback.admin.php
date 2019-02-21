@@ -1,69 +1,80 @@
-<?php
+<?php 
 session_start();
-
 if(isset($_SESSION['adminUser'])){
-    if(isset($_GET['message'])){
-        
-        require '../scripts/database/db.php';
 
-        $userId = $_SESSION['userId'];
-        $message_id = $_GET['message'];
-        $query = "SELECT * FROM messages";
-    
-        if($result = mysqli_query($conn, $query)){
-            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        }else{
-            echo 'Error: ' . mysqli_error($conn);
-        }
-        
-        $query_message = "SELECT * FROM messages WHERE user_id = '$userId' AND id = '$message_id'";
+    require '../scripts/database/db.php';
 
+    $message_id = $_GET['message'];
 
-        if($result2 = mysqli_query($conn, $query_message)){
-            $row_m = mysqli_fetch_assoc($result2);
-        }else{
-            echo 'Error: ' . mysqli_error($conn);
-        }
+    $query = "SELECT * FROM messages";
 
+    if($result = mysqli_query($conn, $query)){
+        $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }else{
+        echo 'Error_fetching_all_messages: ' . mysqli_error($conn);
     }
+
+
+    $query_message = "SELECT * FROM messages WHERE  id = '$message_id'";
+
+
+    if($result2 = mysqli_query($conn, $query_message)){
+        $row_m = mysqli_fetch_assoc($result2);
+        $uid = $row_m['user_id'];
+        $user_q = "SELECT * FROM user WHERE user_id = '$uid'";
+
+        if($user_r = mysqli_query($conn, $user_q)){
+            $user = mysqli_fetch_assoc($user_r);
+        } else{
+            echo 'Error_fetching_user: ' . mysqli_error($conn);
+        }
+    }else{
+        echo 'Error_fetching_message: ' . mysqli_error($conn);
+    }
+
 }else{
     header('Location: ../index.php');
 }
+
+    require 'header.admin.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dulang</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-</head>
-<body id="feedback">
+
+    <?php if($message == 'success'){
+        echo '<div class="modal green">
+        <h3><i class="fas fa-check"></i> Order confirmed!</h3>
+        </div>' ;
+    } elseif($message == 'cancel'){
+        echo '<div class="modal red">
+        <h3><i class="fas fa-check"></i> Order cancelled!</h3>
+        </div>';
+    }
+
+     ?>
     <aside>
         <div class="aside-wrapper">
-            <a href="index.php" class="home-link"><i class="fas fa-arrow-circle-left"></i> Home</a>
+            <a href="../logout.php" class="home-link"><i class="fa fa-sign-out-alt"></i> Logout</a>
             <div class="message-part">
-                <a href="feedback.php" class="aside-link-new">Create new <i class="fas fa-plus-circle"></i></a>
+                <a href="home.admin.php" class="aside-link-new">Dashboard <i class="fas fa-tachometer-alt"></i></a>
                
                 <ul class="aside-messages">
-                <h3 class="message-title">Messages</h3>
+                <h3 class="message-title">User Feedbacks</h3>
 
+                <?php if(!$rows) echo '<h4 style="color:#fff;">No feedbacks yet</h4>' ?>
                 <?php foreach($rows as $row): ?>
-                <li class="aside-message <?php if($row['id'] == $_GET['message']) echo 'selected'; ?>"><a href="viewFeedback.php?message=<?php echo $row['id']; ?>" class="aside-link"><i class="fas fa-arrow-circle-right"></i> <?php echo $row['subject']; ?></a></li>
+                <li class="aside-message  <?php if($row['id'] == $_GET['message']) echo 'selected'; ?>"><a href="feedback.admin.php?message=<?php echo $row['id']; ?>" class="aside-link"><i class="fas fa-arrow-circle-right"></i> <?php echo $row['subject']; ?></a></li>
                 <?php endforeach; ?>
-                    <!-- <li class="aside-message"><a href="#" class="aside-link">Message1<i class="fas fa-arrow-right"></i> </a></li> -->
 
+                    <!-- <li class="aside-message"><a href="viewFeedback.php" class="aside-link"><i class="fas fa-arrow-circle-right"></i> </a></li> -->
                 </ul>
             </div>
         </div>
     </aside>
     <main>
         <div class="main-wrapper">
-            <div class="user-feedback">
+        <div class="user-feedback">
                 <h1>Your Feedback</h1>
                 <h2><span>Subject:</span> <?php echo $row_m['subject']; ?></h2>
+                <h3><span>From: </span><?php echo $user['name']; ?></h3>
                 <p><?php echo $row_m['message']; ?></p>
             </div>
             <div class="admin-feedback">
@@ -71,15 +82,25 @@ if(isset($_SESSION['adminUser'])){
                 <h3><span>From: </span>Admin</h3>
                 <p>
                 <?php if(!$row_m['reply']){
-                    echo 'No reply yet';
-                }else{
+                ?>
+                <form action="sendMessage.admin.php" method="post">
+                    <div class="form-group">
+                        <input type="text" name="message_id" value="<?php echo $message_id; ?>" id="" hidden>
+                        <textarea name="message" id="" cols="30" rows="10" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-sub" name="msg-sub">Submit</button>
+                </form>
+                <?php
+                }
+                else{
                     echo $row_m['reply'];
                 } 
                 ?>
                 </p>
             </div>
-
         </div>
     </main>
+    <script src="../js/admin.js"></script>
 </body>
 </html>

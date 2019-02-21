@@ -54,6 +54,10 @@ if(isset($_SESSION['adminUser'])){
         echo '<div class="modal red">
         <h3><i class="fas fa-check"></i> Order cancelled!</h3>
         </div>';
+    } elseif ($message == 'reply') {
+        echo '<div class="modal green">
+        <h3><i class="fas fa-check"></i> Reply Sent!</h3>
+        </div>';
     }
 
      ?>
@@ -66,9 +70,9 @@ if(isset($_SESSION['adminUser'])){
                 <ul class="aside-messages">
                 <h3 class="message-title">User Feedbacks</h3>
 
-                <?php if(!$rows) echo '<h4 style="color:#fff;">No messages yet</h4>' ?>
+                <?php if(!$rows) echo '<h4 style="color:#fff;">No feedbacks yet</h4>' ?>
                 <?php foreach($rows as $row): ?>
-                <li class="aside-message"><a href="viewFeedback.php?message=<?php echo $row['id']; ?>" class="aside-link"><i class="fas fa-arrow-circle-right"></i> <?php echo $row['subject']; ?></a></li>
+                <li class="aside-message"><a href="feedback.admin.php?message=<?php echo $row['id']; ?>" class="aside-link"><i class="fas fa-arrow-circle-right"></i> <?php echo $row['subject']; ?></a></li>
                 <?php endforeach; ?>
 
                     <!-- <li class="aside-message"><a href="viewFeedback.php" class="aside-link"><i class="fas fa-arrow-circle-right"></i> </a></li> -->
