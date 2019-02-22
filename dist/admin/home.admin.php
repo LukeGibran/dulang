@@ -54,10 +54,6 @@ if(isset($_SESSION['adminUser'])){
         echo '<div class="modal red">
         <h3><i class="fas fa-check"></i> Order cancelled!</h3>
         </div>';
-    } elseif ($message == 'reply') {
-        echo '<div class="modal green">
-        <h3><i class="fas fa-check"></i> Reply Sent!</h3>
-        </div>';
     }
 
      ?>

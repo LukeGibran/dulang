@@ -1,3 +1,9 @@
 <?php
+session_start();
 
-header('location: dist');
+if(isset($_SESSION['adminUser'])){
+    header('Location: dist/admin/home.admin.php');
+}else{
+    header('location: dist');
+
+}

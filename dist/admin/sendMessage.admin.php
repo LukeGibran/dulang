@@ -11,10 +11,10 @@ if(isset($_SESSION['adminUser'])){
     $query = "UPDATE messages SET reply = '$message' WHERE id = '$message_id'";
 
     if($result = mysqli_query($conn, $query)){
-        header("Location: home.admin.php?message=reply");
+        header("Location: feedback.admin.php?message=$message_id&sent=true");
 
     }else{
-        echo 'Erro_sending_message:' . mysqli_error($conn);
+        echo 'Error_sending_message:' . mysqli_error($conn);
     }
 
 } else{

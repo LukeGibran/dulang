@@ -36,17 +36,17 @@ if(isset($_SESSION['adminUser'])){
     header('Location: ../index.php');
 }
 
+if(isset($_GET['sent'])){
+    $sent = $_GET['sent'];
+}
+
     require 'header.admin.php';
 ?>
 
-    <?php if($message == 'success'){
+    <?php if($sent){
         echo '<div class="modal green">
-        <h3><i class="fas fa-check"></i> Order confirmed!</h3>
+        <h3><i class="fas fa-check"></i> Reply Sent!</h3>
         </div>' ;
-    } elseif($message == 'cancel'){
-        echo '<div class="modal red">
-        <h3><i class="fas fa-check"></i> Order cancelled!</h3>
-        </div>';
     }
 
      ?>
