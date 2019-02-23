@@ -101,7 +101,7 @@ if(isset($_SESSION['userId'])){
         </div>
 
         <?php 
-            echo "<meta http-equiv='refresh' content='0;url=checkout.php?code=$code'>";
+            echo "<meta http-equiv='refresh' content='0;url=viewReciept.php?code=$code'>";
         ?>
 </body>
 </html>

@@ -116,8 +116,7 @@ if(isset($_GET['order-submit'])){
         }
     }
 
-    // Free Result
-    mysqli_free_result($formenu,$for_addon);
+
 
     // Close Connection
     mysqli_close($conn);
@@ -162,7 +161,7 @@ else{
                 
                 <div class="form-control">
                 <label for="location">Event Location</label>
-                <input type="text" name="location" id="" value="<?php echo $r['event_location']; ?>" required>
+                <input type="text" name="location" id="" value="<?php if(isset($_SESSION['update_code'])) echo $r['event_location']; ?>" required>
                 </div>
             </div>
             

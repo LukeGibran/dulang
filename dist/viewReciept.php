@@ -35,7 +35,6 @@ $event = strtotime($row['event_date']);
 
 $total = $event - $now;
 
-
 ?>
 
 <!DOCTYPE html>

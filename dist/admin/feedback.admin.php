@@ -6,7 +6,7 @@ if(isset($_SESSION['adminUser'])){
 
     $message_id = $_GET['message'];
 
-    $query = "SELECT * FROM messages";
+    $query = "SELECT * FROM messages ORDER BY date DESC";
 
     if($result = mysqli_query($conn, $query)){
         $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -36,19 +36,20 @@ if(isset($_SESSION['adminUser'])){
     header('Location: ../index.php');
 }
 
-if(isset($_GET['sent'])){
-    $sent = $_GET['sent'];
-}
+
 
     require 'header.admin.php';
 ?>
 
-    <?php if($sent){
+    <?php 
+    if(isset($_GET['sent'])){
+        $sent = $_GET['sent'];
+
+    if($sent){
         echo '<div class="modal green">
         <h3><i class="fas fa-check"></i> Reply Sent!</h3>
-        </div>' ;
+        </div>' ;}
     }
-
      ?>
     <aside>
         <div class="aside-wrapper">

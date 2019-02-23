@@ -79,7 +79,15 @@ if(isset($_SESSION['userId'])){
                     <h3 class="u-date"><?php echo date('F-d-Y', strtotime($row['event_date']));?></h3>
                     <h3 class="u-time"><?php echo $row['event_time']; ?></h3>
                     <h3 class="u-guest"><?php echo $row['no_guest']; ?></h3>
-                    <h3 class="u-status warn"><?php echo $row['status']; ?></h3>
+                    <?php 
+                    if($row['status'] == 'pending' || $row['status'] == 'Pending'){
+                        echo '<h3 class="u-status warn">PENDING</h3>';
+                    } elseif($row['status'] == 'confirm' || $row['status'] == 'Confirm'){
+                        echo '<h3 class="u-status success">CONFIRMED</h3>';
+                    } elseif($row['status'] == 'cancel' || $row['status'] == 'Cancel'){
+                        echo '<h3 class="u-status danger">CANCELLED</h3>';
+                    }
+                    ?>
                     </div>
                     <div class="total-info">
                         <div class="total-placeholder">

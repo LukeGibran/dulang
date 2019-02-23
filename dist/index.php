@@ -1,8 +1,11 @@
 <?php 
 session_start();
 
-$username = $_SESSION['username'];
-$name = $_SESSION['name'];
+if(isset($_SESSION['username'])){
+    $username = $_SESSION['username'];
+    $name = $_SESSION['name'];
+}
+
 
 ?>
 
@@ -23,17 +26,17 @@ $name = $_SESSION['name'];
             <h1>Dulang</h1>
 
             <?php
-                if($_SESSION['username']){
+                if(isset($_SESSION['username'])){
                     echo '<a href="#" class="login-link"><i class="fas fa-user"></i> '.$username.'</a>';
                 } else{
                     echo '<a href="login.php" class="login-link"><i class="fas fa-user"></i> Login</a>';
                 }
 
-                if($_GET['success']){
+                if(isset($_GET['success'])){
                     echo '<span class="success" ><i class="fas fa-check"></i>Welcome '.$username.'!</span>';
-                } elseif ($_GET['logout']) {
+                } elseif (isset($_GET['logout'])) {
                     echo '<span class="warn" ><i class="fas fa-check"></i>You\'ve logout</span>';
-                } elseif($_GET['message']){
+                } elseif(isset($_GET['message'])){
                     echo '<span class="danger" ><i class="fas fa-exclamation-triangle"></i>Order Cancelled</span>';
                 }
             ?>

@@ -2,14 +2,13 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['userId']) || isset($_SESSION['adminUser'])){
+if(isset($_SESSION['adminUser'])){
 
     if(isset($_GET['code'])){
 
         require ('../scripts/database/db.php');
 
         $code = $_GET['code'];
-        $id = $_SESSION['userId'];
         $query = "SELECT * from reciept WHERE r_code = '$code'";
 
         if($result = mysqli_query($conn, $query)){

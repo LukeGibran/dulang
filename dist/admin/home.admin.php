@@ -4,7 +4,7 @@ if(isset($_SESSION['adminUser'])){
 
     require '../scripts/database/db.php';
 
-    $query = "SELECT * FROM messages";
+    $query = "SELECT * FROM messages ORDER BY date DESC";
 
     if($result = mysqli_query($conn, $query)){
         $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -41,19 +41,23 @@ if(isset($_SESSION['adminUser'])){
     header('Location: ../index.php');
 }
 
-    if(isset($_GET['message'])){
-        $message = $_GET['message'];
-    }
+
     require 'header.admin.php';
 ?>
-    <?php if($message == 'success'){
-        echo '<div class="modal green">
-        <h3><i class="fas fa-check"></i> Order confirmed!</h3>
-        </div>' ;
-    } elseif($message == 'cancel'){
-        echo '<div class="modal red">
-        <h3><i class="fas fa-check"></i> Order cancelled!</h3>
-        </div>';
+    <?php
+    if(isset($_GET['message'])){
+        $message = $_GET['message'];
+
+    
+        if($message == 'success'){
+            echo '<div class="modal green">
+            <h3><i class="fas fa-check"></i> Order confirmed!</h3>
+            </div>' ;
+        } elseif($message == 'cancel'){
+            echo '<div class="modal red">
+            <h3><i class="fas fa-check"></i> Order cancelled!</h3>
+            </div>';
+        }
     }
 
      ?>

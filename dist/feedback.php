@@ -5,7 +5,7 @@ session_start();
     require 'scripts/database/db.php';
 
     $userId = $_SESSION['userId'];
-    $query = "SELECT * FROM messages WHERE user_id = '$userId'";
+    $query = "SELECT * FROM messages WHERE user_id = '$userId' ORDER BY date DESC";
 
     if($result = mysqli_query($conn, $query)){
         $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
