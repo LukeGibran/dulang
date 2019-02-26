@@ -241,7 +241,9 @@ if($result_r = mysqli_query($conn, $rec)){
             </div>
             <div class="btns">
             <a href="choose.php" class="btn-link"><i class="fas fa-arrow-left"></i>Back</a>
+            <?php if(isset($_SESSION['userId'])): ?>
             <button type="submit" class='btn-sub' name='order-submit'>Submit</button>
+            <?php endif; ?>
             </div>
         </form>
     </main>

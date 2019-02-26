@@ -3,15 +3,15 @@ session_start();
 require 'database/db.php';
 
 if(isset($_POST['checkout-order'])){
-    
-        function generateRandomString($length = 4) {
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        function generateRandomString($length = 7) {
+            $characters = '0123456789'; //abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
             $charactersLength = strlen($characters);
             $randomString = '';
             for ($i = 0; $i < $length; $i++) {
                 $randomString .= $characters[rand(0, $charactersLength - 1)];
             }
-            return "dulang$randomString";
+            return "$randomString";
         }
             $total = 0;
             $id = $_SESSION['userId'];

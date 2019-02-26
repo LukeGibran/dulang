@@ -28,12 +28,12 @@ if(isset($_SESSION['userId'])){
     header('Location: login.php');
 }
 
+// GET TIME
+// $date = new DateTime(null, new DateTimeZone('Asia/Manila'));
+// $now = strtotime($date->format('F-d-Y'));
+// $event = strtotime($row['event_date']);
 
-$date = new DateTime(null, new DateTimeZone('Asia/Manila'));
-$now = strtotime($date->format('F-d-Y'));
-$event = strtotime($row['event_date']);
-
-$total = $event - $now;
+// $total = $event - $now;
 
 ?>
 
@@ -48,9 +48,11 @@ $total = $event - $now;
     <link rel="stylesheet" href="css/all.min.css">
 </head>
 <body id="checkout">
-    <div class="modal hide">
-        <h3><i class="fas fa-exclamation-triangle"></i> Are you sure? <a href="scripts/remove.inc.php?code=<?php echo $code;?>">Yes</a> <a href="#" id="no">No</a></h3>
-    </div>
+        <div class="modal hide">
+            <h3><i class="fas fa-exclamation-triangle"></i> Are you sure? <a href="scripts/remove.inc.php?code=<?php echo $code;?>">Yes</a> <a href="#" id="no">No</a></h3>
+        </div>
+
+
     <div class="c-wrapper">
         <h1 class="checkout-title">Your Receipt</h1>
         <div class="btns">
@@ -115,16 +117,15 @@ $total = $event - $now;
             </div>
             </div> <!-- end of receipt -->
             <?php if($type == 'pending' || $type == 'Pending'): ?>
-            <div class="information --settings">
+            <div class="information --settings --viewReceipt">
 
                 <div class="info-order">
+                    <p class="notice"><i class="fas fa-exclamation-circle"></i> NOTICE: You still need to pay If you cancel your order <b> 1 day before</b></p>
                     <form action="scripts/setReciept.inc.php">
                     <input type="text" value="<?php echo $code; ?>" name="code" hidden>
                     <input type="text" name="type" value="<?php echo $row['event']; ?>" id="" hidden>
-                        <button class="btn-blue" type="submit" name="update">Update</button>
-                        <?php if($total > 259200): ?>
+                        <button class="btn-blue btn-update" type="submit" name="update">Update</button>
                         <a class="btn-red -link"  name="remove" id="remove" >Cancel Order</a>
-                        <?php endif; ?>
                     </form>
 
                 </div>
