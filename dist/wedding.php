@@ -52,6 +52,9 @@
 <body >
     <main id="event">
         <h1 class="event-title">Wedding</h1>
+        <div class="home-link">
+           <a href="index.php" class='btn-home' name="order-submit"><i class="fas fa-home"></i> HOME</a>
+        </div>
         <form action="user_info.php" method="get">
         <div class="choose">
             <div class="main-choose">
