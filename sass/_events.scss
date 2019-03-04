@@ -65,11 +65,15 @@
     }
     .btn-sub {
       color: #fff;
-      padding: 1rem 2rem;
       background: $primary_dark;
       padding: 7px 10px;
       border: none;
       cursor: pointer;
+
+      &.--packlunch{
+        text-decoration: none;
+        text-align: center
+      }
     }
   }
 

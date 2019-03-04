@@ -122,7 +122,7 @@ if($result_r = mysqli_query($conn, $rec)){
                 <option value="rectangle">Rectangle</option>
             </select>
             <button type="submit" class='btn-sub' name="type-sub">Choose</button>
-            <a href="index.php" class='btn-sub' name="order-submit"><i class="fas fa-home"></i></a>
+            <a href="index.php" class='btn-sub --packlunch' ><i class="fas fa-home"></i> Home</a>
 
         </form>
         <form action="user_info.php" method="get">
