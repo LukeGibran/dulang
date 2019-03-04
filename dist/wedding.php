@@ -52,6 +52,7 @@
 <body >
     <main id="event">
         <h1 class="event-title">Wedding</h1>
+        <p class="event-sentence">Dulang Restaurant is meant for Tausug tribes</p>
         <div class="home-link">
            <a href="index.php" class='btn-home' name="order-submit"><i class="fas fa-home"></i> HOME</a>
         </div>
