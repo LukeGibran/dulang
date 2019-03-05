@@ -10,7 +10,8 @@ if(isset($_GET['order-submit'])){
         $phone = $_SESSION['phone'];
         $type = $_SESSION['type'];
         $menu = $_GET['menu'];
-        $addon = $_GET['addon'];
+        if(isset($_GET['addon']))
+        {$addon = $_GET['addon'];};
 
        
      /**
