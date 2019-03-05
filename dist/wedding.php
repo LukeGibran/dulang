@@ -100,7 +100,7 @@
                         <div class="dishes">
                         <?php foreach($maligay_posts as $maligay_post): ?>
                             <label class="addons-list">
-                                <input type="radio" name="addon" value="<?php echo $maligay_post['waddon_id']; ?>" id="" required>
+                                <input type="radio" name="addon" value="<?php echo $maligay_post['waddon_id']; ?>" id="" >
                                 <h2 class="addon-title"><?php echo $maligay_post['name'] ?></h2>
                                 <h3 class="addon-price"><span class="amount">₱ <?php echo $maligay_post['price'];?></span></h3>
                                 <span class="bg"></span>

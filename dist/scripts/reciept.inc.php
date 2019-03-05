@@ -24,7 +24,17 @@ if(isset($_POST['checkout-order'])){
             $menu = $_POST['menu'];
             $menu_p = $_POST['menu_price'];
             $addon = $_POST['addon'];
+            if(isset($_POST['addon']))
+            {
+            $addon = $_POST['addon'];
             $addon_p = $_POST['addon_price'];
+            }
+            else{
+            $addon = NULL;
+            $addon_p = 0;
+            }
+
+
             $rcode = generateRandomString();
             if($type == 'wedding' || $type == 'packlunch'){
                 $total = $menu_p + $addon_p;

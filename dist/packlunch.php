@@ -197,7 +197,7 @@ if($result_r = mysqli_query($conn, $rec)){
                         <div class="dishes">
                         <?php foreach($addons as $addons): ?>
                             <label class="addons-list">
-                                <input type="radio" name="addon" value="<?php echo $addons['paddon_id']?>" id="" required>
+                                <input type="radio" name="addon" value="<?php echo $addons['paddon_id']?>" id="" >
                                 <h2 class="addon-title"><?php echo $addons['name']; ?></h2>
                                 <h3 class="addon-price"><span class="amount">₱ <?php echo $addons['price']; ?></span></h3>
                                 <span class="bg"></span>

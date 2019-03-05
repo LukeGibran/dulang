@@ -95,7 +95,7 @@
 
                 <?php foreach($addons_posts as $addon): ?>
                     <label class="addons-list -catering">
-                        <input type="radio" name="addon" value="<?php echo $addon['caddon_id']; ?>" id="" required>
+                        <input type="radio" name="addon" value="<?php echo $addon['caddon_id']; ?>" id="" >
                         <h2 class="addon-title"><?php echo $addon['name']; ?></h2>
                         <h3 class="addon-price"><span class="amount">₱ <?php echo $addon['price']; ?> / pax</span></h3>
                         <h3 class="menu-dishes">Dishes: </h3>

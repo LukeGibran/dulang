@@ -75,7 +75,7 @@ if(isset($_SESSION['userId'])){
                     <h3 class="u-name"><?php echo $_SESSION['name']; ?></h3>
                     <h3 class="u-event"><?php echo $row['event']; ?></h3>
                     <h3 class="u-order"><?php echo $row['menu']; ?> <span class="price">₱ <?php echo $row['menu_price']; ?></span></h3>
-                    <h3 class="u-addons"><?php echo $row['addon']; ?> <span class="price">₱ <?php echo $row['addon_price']; ?></span></h3>
+                    <h3 class="u-addons"><?php if($row['addon']){ echo $row['addon'];}else {echo 'NONE';} ?> <span class="price">₱ <?php echo $row['addon_price']; ?></span></h3>
                     <h3 class="u-date"><?php echo date('F-d-Y', strtotime($row['event_date']));?></h3>
                     <h3 class="u-time"><?php echo $row['event_time']; ?></h3>
                     <h3 class="u-guest"><?php echo $row['no_guest']; ?></h3>

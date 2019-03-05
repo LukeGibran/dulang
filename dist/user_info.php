@@ -30,6 +30,7 @@ if(isset($_GET['order-submit'])){
             echo 'Error: ' . mysqli_error($conn);
         }
     
+if(isset($_GET['addon'])){ 
     $for_addon = "SELECT * from wedding_addon WHERE waddon_id = '$addon'";
 
     if($addon_result = mysqli_query($conn, $for_addon)){
@@ -38,7 +39,7 @@ if(isset($_GET['order-submit'])){
     }else{
         echo 'Error: ' . mysqli_error($conn);
 
-    }
+    }}
 
       }
     // END WEDDING
@@ -61,6 +62,7 @@ if(isset($_GET['order-submit'])){
             echo 'Error: ' . mysqli_error($conn);
         }
     
+    if(isset($_GET['addon'])){  
     $for_addon = "SELECT * from catering_addon WHERE caddon_id = '$addon'";
 
     if($addon_result = mysqli_query($conn, $for_addon)){
@@ -69,7 +71,7 @@ if(isset($_GET['order-submit'])){
     }else{
         echo 'Error: ' . mysqli_error($conn);
 
-    }
+    }}
     } // END CATERING
 
     /**
@@ -90,6 +92,8 @@ if(isset($_GET['order-submit'])){
         }
 
 
+   if(isset($_GET['addon'])) {
+    
     $for_addon = "SELECT * from packlunch_addon WHERE paddon_id = '$addon'";
 
     if($addon_result = mysqli_query($conn, $for_addon)){
@@ -98,7 +102,7 @@ if(isset($_GET['order-submit'])){
     }else{
         echo 'Error: ' . mysqli_error($conn);
 
-    }
+    }}
     }
     // END OF PACKLUNCH 
 
@@ -178,7 +182,7 @@ else{
 
                 <div class="form-control">
                 <label for="guest">Number of Guests</label>
-                <input type="number" name="guest" value="<?php echo $r['no_guest']; ?>" id="" required>
+                <input type="number" min = "50" name="guest" value="<?php echo $r['no_guest']; ?>" id="" required>
                 </div>
             </div>
 
@@ -198,13 +202,14 @@ else{
                         <h3 class="menu-dishes">Dishes: </h3>
                         <p class="menu-dish"><?php echo $menu_pick['menu'];?></p>
                 </label>
-
-                <label class="addons-list -wedding">
-                        <input type="text" name="addon" value="<?php echo $addon_pick['name'];?>" id="" hidden>
-                        <input type="text" name="addon_price" value="<?php echo $addon_pick['price'];?>" id="" hidden>
-                        <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
-                        <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'] ?></span></h3>
-                </label>
+                <?php if(isset($_GET['addon'])): ?>
+                    <label class="addons-list -wedding">
+                            <input type="text" name="addon" value="<?php echo $addon_pick['name'];?>" id="" hidden>
+                            <input type="text" name="addon_price" value="<?php echo $addon_pick['price'];?>" id="" hidden>
+                            <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
+                            <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'] ?></span></h3>
+                    </label>
+                <?php endif; ?>
                 <?php endif; ?>
 
                 <?php if($type == 'catering'): ?>
@@ -217,6 +222,7 @@ else{
                         <h3 class="menu-dishes">Dishes: </h3>
                         <p class="menu-dish"><?php echo $menu_pick['dishes'];?></p>
                 </label>
+                <?php if(isset($_GET['addon'])): ?>
 
                 <label class="addons-list -catering">
                         <input type="text" name="addon" value="<?php echo $addon_pick['name'];?>" id="" hidden>
@@ -228,6 +234,8 @@ else{
                 </label>
                 <?php endif;?>
 
+                <?php endif;?>
+
                 <?php if($type == 'packlunch'): ?>
                      <label class="menu-list packlunch" required>
                         <input type="text" name="menu" id="#" value="<?php echo $menu_pick['name']; ?>" hidden>
@@ -237,6 +245,7 @@ else{
                         <h2 class="menu-price"> <span class="amount">₱ <?php echo $menu_pick['price']; ?></span></h2>
                         <span class="bg"></span>
                     </label>
+                    <?php if(isset($_GET['addon'])): ?>
 
                     <label class="addons-list -wedding">
                          <input type="text" name="addon" value="<?php echo $addon_pick['name'];?>" id="" hidden>
@@ -244,6 +253,8 @@ else{
                         <h2 class="addon-title"><?php echo $addon_pick['name']; ?></h2>
                         <h3 class="addon-price"><span class="amount">₱ <?php echo $addon_pick['price'];?> / pax</span></h3>
                     </label>
+                    <?php endif;?>
+
                 <?php endif;?>
 
                 <!-- <label class="addons-list -catering">
