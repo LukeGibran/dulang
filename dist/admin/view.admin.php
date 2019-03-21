@@ -125,6 +125,7 @@ if(isset($_SESSION['adminUser'])){
                     <h3>Date: </h3>
                     <h3>Time: </h3>
                     <h3>Guest no: </h3>
+                    <h3>Location: </h3>
                     <h3>Status: </h3>
                     </div>
 
@@ -137,6 +138,7 @@ if(isset($_SESSION['adminUser'])){
                     <h3 class="u-date"><?php echo date('F-d-Y', strtotime($row['event_date']));?></h3>
                     <h3 class="u-time"><?php echo $row['event_time']; ?></h3>
                     <h3 class="u-guest"><?php echo $row['no_guest']; ?></h3>
+                    <h3 class="u-guest"><?php echo $row['event_location']; ?></h3>
                     <?php 
                     if($row['status'] == 'pending' || $row['status'] == 'Pending'){
                         echo '<h3 class="u-status warn">PENDING</h3>';

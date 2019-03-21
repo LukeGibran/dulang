@@ -44,10 +44,7 @@ if(isset($_SESSION['userId'])){
       <input type="text" name="username" id="" required>
       <label for="">Username</label>
     </div>
-    <div class="inputBox">
-      <input type="text" name="address" id="" required>
-      <label for="">Address</label>
-    </div>
+
     <div class="inputBox">
       <input type="text" name="number" id="" required>
       <label for="">Phone Number</label>

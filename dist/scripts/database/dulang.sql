@@ -63,7 +63,7 @@ CREATE TABLE `catering` (
 
 LOCK TABLES `catering` WRITE;
 /*!40000 ALTER TABLE `catering` DISABLE KEYS */;
-INSERT INTO `catering` VALUES (1,'Set 1',150,'Beef kulma, Honeyed-chicken, Pansit Udang, Macaroni Salad, Rice/Fried Rice/Kyuning, Softdrinks, Free water',0),(2,'Set 2',160,'Beef steak, Buttered, Chopsuey, Leche Flan, Rice/Yellow Rice, Softdrinks, Free water',8),(3,'Set 3',160,'Beef Rendang, Chicken Pyanggang, Crabs w/ Veggies, Bihon / sotanghon, Fruit Salad, Rice/Yellow Rice, Softdrinks, Free water',0),(4,'Set 4',180,'Beef Menudo, Fish Fillet, Sotanghon, Fruit Salad, Chicken BBQ, Macaroni,Softdrinks, Free water',0),(5,'Set 5',150,'Beef kulma, Honeyed-chicken, Pansit Udang, Macaroni Salad, Rice/Fried Rice/Kyuning, Softdrinks, Free water',1);
+INSERT INTO `catering` VALUES (1,'Set 1',150,'Beef kulma, Honeyed-chicken, Pansit Udang, Macaroni Salad, Rice/Fried Rice/Kyuning, Softdrinks, Free water',0),(2,'Set 2',160,'Beef steak, Buttered, Chopsuey, Leche Flan, Rice/Yellow Rice, Softdrinks, Free water',10),(3,'Set 3',160,'Beef Rendang, Chicken Pyanggang, Crabs w/ Veggies, Bihon / sotanghon, Fruit Salad, Rice/Yellow Rice, Softdrinks, Free water',0),(4,'Set 4',180,'Beef Menudo, Fish Fillet, Sotanghon, Fruit Salad, Chicken BBQ, Macaroni,Softdrinks, Free water',2),(5,'Set 5',150,'Beef kulma, Honeyed-chicken, Pansit Udang, Macaroni Salad, Rice/Fried Rice/Kyuning, Softdrinks, Free water',1);
 /*!40000 ALTER TABLE `catering` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +145,7 @@ CREATE TABLE `packlunch` (
 
 LOCK TABLES `packlunch` WRITE;
 /*!40000 ALTER TABLE `packlunch` DISABLE KEYS */;
-INSERT INTO `packlunch` VALUES (1,'Tiyula Itum','beef',2500,'round',1),(2,'Tiyula Itum','beef',4200,'oblong',7),(3,'Tiyula Itum','beef',5500,'rectangle',0),(4,'Kulma','beef',2800,'round',1),(5,'Rendang','beef',2800,'round',2),(6,'Kari Kari','beef',2800,'round',3),(7,'Kulma','beef',4200,'oblong',0),(9,'Rendang','beef',4200,'oblong',0),(10,'Kari Kari','beef',4200,'oblong',0),(11,'Kulma','beef',5500,'rectangle',0),(12,'Rendang','beef',5500,'rectangle',0),(13,'Kari Kari','beef',5500,'rectangle',0),(14,'Chicken Teriyaki','chicken',1800,'round',0),(15,'Chicken Barbeque','chicken',1800,'round',0),(16,'Fried Chicken','chicken',1800,'round',0),(17,'Chicken Teriyaki','chicken',2500,'oblong',0),(18,'Chicken Barbeque','chicken',2500,'oblong',0),(19,'Fried Chicken','chicken',2500,'oblong',0),(20,'Chicken Teriyaki','chicken',3300,'rectangle',0),(21,'Chicken Barbeque','chicken',3300,'rectangle',0),(22,'Fried Chicken','chicken',3300,'rectangle',0),(23,'Shrimp w/ Garlic','seafood',3500,'round',0),(24,'Sweet and Spicy','seafood',3500,'round',0),(25,'Squid Barbeque','seafood',3500,'round',0),(26,'Shrimp w/ Garlic','seafood',5200,'oblong',0),(27,'Sweet and Spicy','seafood',5200,'oblong',0),(28,'Squid Barbeque','seafood',5200,'oblong',0),(29,'Shrimp w/ Garlic','seafood',6800,'rectangle',0),(30,'Sweet and Spicy','seafood',6800,'rectangle',0),(31,'Squid Barbeque','seafood',6800,'rectangle',0);
+INSERT INTO `packlunch` VALUES (1,'Tiyula Itum','beef',2500,'round',1),(2,'Tiyula Itum','beef',4200,'oblong',7),(3,'Tiyula Itum','beef',5500,'rectangle',0),(4,'Kulma','beef',2800,'round',4),(5,'Rendang','beef',2800,'round',3),(6,'Kari Kari','beef',2800,'round',3),(7,'Kulma','beef',4200,'oblong',0),(9,'Rendang','beef',4200,'oblong',0),(10,'Kari Kari','beef',4200,'oblong',0),(11,'Kulma','beef',5500,'rectangle',0),(12,'Rendang','beef',5500,'rectangle',0),(13,'Kari Kari','beef',5500,'rectangle',0),(14,'Chicken Teriyaki','chicken',1800,'round',0),(15,'Chicken Barbeque','chicken',1800,'round',0),(16,'Fried Chicken','chicken',1800,'round',0),(17,'Chicken Teriyaki','chicken',2500,'oblong',0),(18,'Chicken Barbeque','chicken',2500,'oblong',0),(19,'Fried Chicken','chicken',2500,'oblong',0),(20,'Chicken Teriyaki','chicken',3300,'rectangle',0),(21,'Chicken Barbeque','chicken',3300,'rectangle',0),(22,'Fried Chicken','chicken',3300,'rectangle',0),(23,'Shrimp w/ Garlic','seafood',3500,'round',0),(24,'Sweet and Spicy','seafood',3500,'round',0),(25,'Squid Barbeque','seafood',3500,'round',0),(26,'Shrimp w/ Garlic','seafood',5200,'oblong',0),(27,'Sweet and Spicy','seafood',5200,'oblong',0),(28,'Squid Barbeque','seafood',5200,'oblong',0),(29,'Shrimp w/ Garlic','seafood',6800,'rectangle',0),(30,'Sweet and Spicy','seafood',6800,'rectangle',0),(31,'Squid Barbeque','seafood',6800,'rectangle',0);
 /*!40000 ALTER TABLE `packlunch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +199,7 @@ CREATE TABLE `reciept` (
   `status` tinytext,
   `r_code` tinytext,
   PRIMARY KEY (`r_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `reciept` (
 
 LOCK TABLES `reciept` WRITE;
 /*!40000 ALTER TABLE `reciept` DISABLE KEYS */;
-INSERT INTO `reciept` VALUES (30,1,'packlunch','2020-03-01','13:02:00','Kari Kari',2800,'Chopsuey',850,120,'2019-02-17 14:00:37','Nomi',3650,'Cancel','dulangMKBK'),(31,1,'packlunch','2019-02-08','13:02:00','Tiyula Itum',4200,'Veggies',850,123,'2019-02-20 07:43:24','zamboanga',5050,'confirm','dulangqDJq'),(32,1,'packlunch','2019-02-16','13:02:00','Kari Kari',2800,'Chopsuey',850,123,'2019-02-20 07:44:55','zamboanga',3650,'confirm','dulangOlWu'),(35,1,'catering','2019-02-20','13:00:00','Set 4',180,'Set 3',150,123,'2019-02-16 22:28:13','zamboanga',40590,'Cancel','dulangtW8G'),(36,1,'packlunch','2019-02-21','13:02:00','Rendang',2800,'Sotanghon',850,123,'2019-02-16 22:40:56','Zamboanga',3650,'Cancel','dulangsiEK'),(37,5,'wedding','2019-02-22','12:02:00','Medium Dulang',5500,'Pump Boat',6500,115,'2019-02-18 04:04:00','zamboanga',12000,'confirm','dulang24eD'),(39,1,'packlunch','2019-02-26','13:01:00','Tiyula Itum',4200,'Chopsuey',850,120,'2019-02-18 10:12:32','zamboanga',5050,'Cancel','dulangxdDt'),(40,1,'catering','2019-02-21','12:00:00','Set 2',160,'Set 2',130,123,'2019-02-20 08:22:20','zamboanga',35670,'cancel','dulangkAWg'),(41,1,'packlunch','2019-02-22','13:00:00','Tiyula Itum',2500,'Chopsuey',850,123,'2019-02-20 15:17:34','zamboanga',3350,'confirm','dulangN6Jq'),(42,1,'packlunch','2019-02-28','12:09:00','Kulma',2800,'Chopsuey',850,114,'2019-02-20 09:33:35','zamboanga',3650,'cancel','dulangpNeF'),(43,1,'catering','2019-02-28','13:00:00','Set 2',160,'Set 2',130,123,'2019-02-20 15:17:42','Zamboanga',35670,'cancel','dulang0z4u'),(44,1,'catering','2019-02-28','13:02:00','Set 2',160,'Set 3',150,123,'2019-02-20 15:55:48','zamboanga',38130,'Cancel','dulangdJuT');
+INSERT INTO `reciept` VALUES (53,1,'catering','2019-03-29','12:00:00','Set 2',160,'',0,50,'2019-03-05 12:58:15','123',8000,'confirm','1081782'),(54,1,'wedding','2019-03-30','13:02:00','Medium Dulang',5500,'',0,123,'2019-03-05 12:54:37','123',5500,'Pending','8263280'),(55,1,'packlunch','2019-03-14','12:03:00','Kulma',2800,'',0,50,'2019-03-21 14:21:06','Zamboanga',2800,'cancel','2458749'),(56,1,'packlunch','2019-03-30','13:02:00','Rendang',2800,'',0,123,'2019-03-05 12:58:57','zamboanga',2800,'Pending','0071094'),(57,1,'packlunch','2019-03-22','13:02:00','Kulma',2800,'Chopsuey',850,123,'2019-03-05 13:00:10','zamboanga',3650,'Pending','8822810'),(58,1,'wedding','2019-02-04','12:32:00','Medium Dulang',5500,'Speed Boat',6500,113,'2019-03-05 13:01:49','Zamboanga',12000,'Pending','5204350'),(59,1,'catering','2019-03-29','12:00:00','Set 4',180,'',0,123,'2019-03-21 14:08:05','Zamboanga',22140,'Pending','6709525');
 /*!40000 ALTER TABLE `reciept` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +223,6 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` tinytext,
   `username` tinytext,
-  `address` mediumtext,
   `phone` double DEFAULT NULL,
   `password` longtext,
   PRIMARY KEY (`user_id`)
@@ -236,7 +235,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Liuk Jhivran','lukeG','Zamboanga City',123989009,'$2y$10$b/QWr3hrsV4O1jd1g5AaouUL.1IZVpoE.YRIQkjzQKuajnyFfXYa.'),(2,'Luke Gibran','lukang','Zamboanga City',123899790,'$2y$10$GHbzs8QdhS8hL7kUcDYhWOwoEgftW2cbY2AAMGCWPTNctr2iPB/lS'),(3,'Lukang G','Luk','Zamboanga City',1239778,'$2y$10$CGgXdPSv.ggBdRZ3mmOIXOOXG22.ejhtwNmx96pxvEVdK0dKPJYXu'),(4,'Ben Daud','Ben','zamboanga',123978889,'$2y$10$DImFUKuJ8..uWnZYgcNG.eUA01G2pxw3f8Nv8kcH4CACn58iSrHFe'),(5,'Ayer Air','ayer','Zamboanga City',97878182809,'$2y$10$X1NEgdgcPmAL3n8ZiS3WQOvRcce1G.jLMw0eSTKdMlJpn7j9k/THe');
+INSERT INTO `user` VALUES (1,'Liuk Jhivran','lukeG',123989009,'$2y$10$b/QWr3hrsV4O1jd1g5AaouUL.1IZVpoE.YRIQkjzQKuajnyFfXYa.'),(2,'Luke Gibran','lukang',123899790,'$2y$10$GHbzs8QdhS8hL7kUcDYhWOwoEgftW2cbY2AAMGCWPTNctr2iPB/lS'),(3,'Lukang G','Luk',1239778,'$2y$10$CGgXdPSv.ggBdRZ3mmOIXOOXG22.ejhtwNmx96pxvEVdK0dKPJYXu'),(4,'Ben Daud','Ben',123978889,'$2y$10$DImFUKuJ8..uWnZYgcNG.eUA01G2pxw3f8Nv8kcH4CACn58iSrHFe'),(5,'Ayer Air','ayer',97878182809,'$2y$10$X1NEgdgcPmAL3n8ZiS3WQOvRcce1G.jLMw0eSTKdMlJpn7j9k/THe');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +262,7 @@ CREATE TABLE `wedding` (
 
 LOCK TABLES `wedding` WRITE;
 /*!40000 ALTER TABLE `wedding` DISABLE KEYS */;
-INSERT INTO `wedding` VALUES (1,2500,'Chicken, Shrimps, Squids, Fish, Eggs, Candy, Chocolates, Jah, Chocolates Attractive & more Decorations','Small Dulang',5),(2,5500,'Chicken, Shrimps, Squids, Fish, Eggs, Candy, Chocolates, Jah, Panyam, Baulo, Rice, Chocolate attractives and more decoration','Medium Dulang',7),(4,8500,'Chicken, Shrimps, Squids, Fish, Eggs, Candy, Chocolates, Jah, Panyam, Baulo, Rice, Chocolate attractives and more decoration','Two-layer',0);
+INSERT INTO `wedding` VALUES (1,2500,'Chicken, Shrimps, Squids, Fish, Eggs, Candy, Chocolates, Jah, Chocolates Attractive & more Decorations','Small Dulang',6),(2,5500,'Chicken, Shrimps, Squids, Fish, Eggs, Candy, Chocolates, Jah, Panyam, Baulo, Rice, Chocolate attractives and more decoration','Medium Dulang',9),(4,8500,'Chicken, Shrimps, Squids, Fish, Eggs, Candy, Chocolates, Jah, Panyam, Baulo, Rice, Chocolate attractives and more decoration','Two-layer',0);
 /*!40000 ALTER TABLE `wedding` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,4 +300,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-22 14:01:05
+-- Dump completed on 2019-03-21 22:25:41
