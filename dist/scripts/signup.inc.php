@@ -10,7 +10,7 @@ if(isset($_POST['signup-submit'])){
     $pw1 = $_POST['password'];
     $pw2 = $_POST['r-password'];
 
-    if(empty($name) || empty($username) || empty($address) || empty($number) || empty($pw1) || empty($pw2)){
+    if(empty($name) || empty($username) || empty($number) || empty($pw1) || empty($pw2)){
         header("Location: ../signup.php?error=emptyfields");
         exit();
     }else if($pw1 != $pw2){
